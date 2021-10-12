@@ -1,10 +1,13 @@
-import './App.scss';
-
+import React, { useContext } from "react";
+import "./App.scss";
+import FormContextProvider from "./context/formProvider";
+import Form from "./components/form";
+import Preview from "./components/preview";
 function App() {
   return (
-    <div className="App">
-      <p>Leats get started</p>
-    </div>
+    <FormContextProvider className="App">
+      <Form />
+    </FormContextProvider>
   );
 }
 

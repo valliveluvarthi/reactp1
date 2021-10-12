@@ -1,0 +1,41 @@
+.preview-look{
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    color: #fff;
+    margin-top: 0.4rem;
+}
+.block-header{
+    text-align: center;
+}
+.title-text{
+    text-align: center;
+}
+.preview-btn-list{
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+.preview-button {
+    font: inherit;
+    background-color: #240370;
+    color: white;
+    border: 1px solid #240370;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.preview-button:hover,
+.preview-button:active {
+    font: inherit;
+    background-color: #240370;
+    color: white;
+    border: 1px solid #240370;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
