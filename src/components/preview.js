@@ -31,7 +31,6 @@ const Preview = (props) => {
           {bulletArr &&
             bulletArr.length > 0 &&
             bulletArr.map((item, i) => {
-              console.log("item", item);
               return (
                 <ul key={i}>
                   {item.value !== "" && (
@@ -47,7 +46,6 @@ const Preview = (props) => {
           {buttonArr &&
             buttonArr.length > 0 &&
             buttonArr.map((item, i) => {
-              console.log("item", item);
               return (
                 <ul key={i} className="preview-btn-list">
                   <li>

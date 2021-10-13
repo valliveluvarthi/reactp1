@@ -3,11 +3,13 @@ import React, { useState, useContext } from "react";
 import FormContext from "../context/form-context";
 import Preview from "./preview";
 import "./form.scss";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Form = (props) => {
   const [showBulletErr, setBulletErr] = useState(false);
-  const [showButtonErr, setButtonErr] = useState(false);
   const {
     value: urlValue,
     isValid: urlIsValid,
@@ -68,7 +70,6 @@ const Form = (props) => {
       const list = [...arr];
       list.splice(i, 1);
       formCtx.bulltePoints = list;
-      console.log("in delete", formCtx.bulltePoints);
       setArr(list);
     } else {
       return;
@@ -82,7 +83,6 @@ const Form = (props) => {
       const newArr = s.slice();
       newArr[index].value = e.target.value;
       formCtx.bulltePoints = newArr;
-      console.log("on change function", formCtx.bulltePoints);
       return newArr;
     });
   };
@@ -94,7 +94,6 @@ const Form = (props) => {
       { type: "Button", id: btnarr[btnarr.length - 1].id + 1 },
     ];
     formCtx.button = btnList;
-    console.log("in add of buttons", formCtx.button);
     setBtnArr((s) => {
       return [
         ...s,
@@ -110,7 +109,6 @@ const Form = (props) => {
       const btnlist = [...btnarr];
       btnlist.splice(i, 1);
       formCtx.button = btnlist;
-      console.log("in delete", formCtx.button);
       setBtnArr(btnlist);
     } else {
       return;
@@ -123,15 +121,31 @@ const Form = (props) => {
     formIsValid = true;
   }
 
-  const submitHandler = (event) => {
+  async function submitHandler(event){
     event.preventDefault();
 
     if (!formIsValid) {
       return;
     }
 
-    console.log("Submitted!");
-
+    const postObject = {
+      url : formCtx.url,
+      title : formCtx.title,
+      bulletPoints : formCtx.bulltePoints,
+      button : formCtx.button
+    }
+    const response = await fetch('https://react-course-3478b-default-rtdb.firebaseio.com/form.json', {
+      method: 'POST',
+      body: JSON.stringify(postObject),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+    if(data && data.name){
+      toast.success("Form submitted successfully!", { position: toast.POSITION.BOTTOM_CENTER })
+    }
     resetURL();
     resetTitle();
     setArr(BulletArr);
