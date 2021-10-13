@@ -144,7 +144,11 @@ const Form = (props) => {
     const data = await response.json();
     console.log(data);
     if(data && data.name){
-      toast.success("Form submitted successfully!", { position: toast.POSITION.BOTTOM_CENTER })
+      toast.success("Form submitted successfully!", { position: toast.POSITION.BOTTOM_CENTER });
+      formCtx.url = "";
+      formCtx.title = "";
+      formCtx.bulltePoints = [];
+      formCtx.button = [];
     }
     resetURL();
     resetTitle();
