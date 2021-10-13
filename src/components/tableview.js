@@ -23,8 +23,12 @@ const TableView = (props) => {
             </tr>
             {props.keys.map((key, index) => (
               <tr key={key.id}>
-                <td>{key.url}</td>
-                <td>{key.title}</td>
+                <td>
+                  <p>{key.url}</p>
+                </td>
+                <td>
+                  <p>{key.title}</p>
+                </td>
                 <td>
                   { 
                     key.bulletPoints &&

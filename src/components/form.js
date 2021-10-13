@@ -49,7 +49,7 @@ const Form = (props) => {
     fetchFormHandler();
   }, [fetchFormHandler]);
 
-  const {
+  var {
     value: urlValue,
     isValid: urlIsValid,
     hasError: urlHasError,
@@ -58,7 +58,7 @@ const Form = (props) => {
     reset: resetURL,
   } = useInput(isNotEmpty);
 
-  const {
+  var {
     value: titleValue,
     isValid: titleIsValid,
     hasError: titleHasError,
@@ -76,7 +76,7 @@ const Form = (props) => {
       value: "",
     },
   ];
-  const [arr, setArr] = useState(BulletArr);
+  var [arr, setArr] = useState(BulletArr);
 
   const ButtonArr = [
     {
@@ -84,7 +84,7 @@ const Form = (props) => {
       id: 1,
     },
   ];
-  const [btnarr, setBtnArr] = useState(ButtonArr);
+  var [btnarr, setBtnArr] = useState(ButtonArr);
   formCtx.button = btnarr;
   //actions related to input
   const addInput = () => {
@@ -253,7 +253,7 @@ const Form = (props) => {
                 value={titleValue}
                 onChange={titleChangeHandler}
                 onBlur={titleBlurHandler}
-                maxLength = "15" 
+                maxLength="15"
               />
               {titleHasError && (
                 <p className="error-text">Please enter a Title.</p>
@@ -272,7 +272,7 @@ const Form = (props) => {
                           id={i}
                           type={item.type}
                           size="40"
-                          maxLength = "20"
+                          maxLength="20"
                         />
                         {arr.length === 1 && (
                           <button
@@ -356,9 +356,11 @@ const Form = (props) => {
         </form>
         <Preview formValue={formCtx} />
       </div>
-      {
-        keys.length > 0 && <TableView keys={keys} />
-      }
+      {keys.length > 0 && (
+        <TableView
+          keys={keys}
+        />
+      )}
     </React.Fragment>
   );
 };

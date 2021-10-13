@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./preview.scss";
 const Preview = (props) => {
-  console.log(props);
   const [urlValue, setUrlValue] = useState(props.formValue.url);
   const [titleValue, setTitleValue] = useState(props.formValue.title);
   const [bulletArr, setBulletArr] = useState(props.formValue.bulltePoints);
