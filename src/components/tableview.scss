@@ -8,8 +8,13 @@ table, th, td {
     border:1px solid rgb(240, 233, 233);
     color: #fff;
 }
+.table-content{
+    height: 30rem;
+    overflow-y: scroll;
+}
 table{
     width: 100%;
+    overflow: scroll;
 }
 
 tr{
