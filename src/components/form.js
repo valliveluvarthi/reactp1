@@ -1,15 +1,54 @@
 import useInput from "../context/use-input";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import FormContext from "../context/form-context";
 import Preview from "./preview";
 import "./form.scss";
-import {toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-toast.configure()
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import TableView from "./tableview";
+toast.configure();
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Form = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [showBulletErr, setBulletErr] = useState(false);
+  var [keys, setKeys] = useState([]);
+  var [apidata, setApidata] = useState({});
+
+  //fetching initial data
+  const fetchFormHandler = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      const loadedFormData = [];
+      const data = await response.json();
+      for (const key in data) {
+        loadedFormData.push({
+          id: key,
+          url: data[key].url,
+          title: data[key].title,
+          bulletPoints: data[key].bulletPoints,
+          button: data[key].button,
+        });
+      }
+      setKeys(loadedFormData);
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchFormHandler();
+  }, [fetchFormHandler]);
+
   const {
     value: urlValue,
     isValid: urlIsValid,
@@ -121,7 +160,7 @@ const Form = (props) => {
     formIsValid = true;
   }
 
-  async function submitHandler(event){
+  async function submitHandler(event) {
     event.preventDefault();
 
     if (!formIsValid) {
@@ -129,22 +168,48 @@ const Form = (props) => {
     }
 
     const postObject = {
-      url : formCtx.url,
-      title : formCtx.title,
-      bulletPoints : formCtx.bulltePoints,
-      button : formCtx.button
-    }
-    const response = await fetch('https://react-course-3478b-default-rtdb.firebaseio.com/form.json', {
-      method: 'POST',
-      body: JSON.stringify(postObject),
-      headers: {
-        'Content-Type': 'application/json'
+      url: formCtx.url,
+      title: formCtx.title,
+      bulletPoints: formCtx.bulltePoints,
+      button: formCtx.button,
+    };
+    const response = await fetch(
+      "https://react-course-3478b-default-rtdb.firebaseio.com/form.json",
+      {
+        method: "POST",
+        body: JSON.stringify(postObject),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
     const data = await response.json();
-    console.log(data);
-    if(data && data.name){
-      toast.success("Form submitted successfully!", { position: toast.POSITION.BOTTOM_CENTER });
+    if (data && data.name) {
+      toast.success("Form submitted successfully!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+      try {
+        const response = await fetch(
+          "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
+        );
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
+        }
+        const loadedFormData = [];
+        const fetcheddata = await response.json();
+        for (const key in fetcheddata) {
+          loadedFormData.push({
+            id: key,
+            url: fetcheddata[key].url,
+            title: fetcheddata[key].title,
+            bulletPoints: fetcheddata[key].bulletPoints,
+            button: fetcheddata[key].button,
+          });
+        }
+        setKeys(loadedFormData);
+      } catch (err) {
+        console.log(err);
+      }
       formCtx.url = "";
       formCtx.title = "";
       formCtx.bulltePoints = [];
@@ -154,7 +219,7 @@ const Form = (props) => {
     resetTitle();
     setArr(BulletArr);
     setBtnArr(ButtonArr);
-  };
+  }
 
   const urlClasses = urlHasError ? "form-control invalid" : "form-control";
   const titleClasses = titleHasError ? "form-control invalid" : "form-control";
@@ -162,134 +227,139 @@ const Form = (props) => {
   const buttonClasses = "btn-list";
 
   return (
-    <div className="from-preview-look">
-      <form onSubmit={submitHandler}>
-        <div className="control-group">
-          <div className="form-header">
-            <h2>Form</h2>
+    <React.Fragment>
+      <div className="from-preview-look">
+        <form onSubmit={submitHandler}>
+          <div className="control-group">
+            <div className="form-header">
+              <h2>Form</h2>
+            </div>
+            <div className={urlClasses}>
+              <label htmlFor="url">URL</label>
+              <input
+                type="text"
+                id="url"
+                value={urlValue}
+                onChange={urlChangeHandler}
+                onBlur={urlBlurHandler}
+              />
+              {urlHasError && <p className="error-text">Please enter a URL.</p>}
+            </div>
+            <div className={titleClasses}>
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                value={titleValue}
+                onChange={titleChangeHandler}
+                onBlur={titleBlurHandler}
+                maxLength = "15" 
+              />
+              {titleHasError && (
+                <p className="error-text">Please enter a Title.</p>
+              )}
+            </div>
+            <div>
+              {arr &&
+                arr.length > 0 &&
+                arr.map((item, i) => {
+                  return (
+                    <ul key={i} className={bulletClasses}>
+                      <li>
+                        <input
+                          onChange={handleChange}
+                          value={item.value}
+                          id={i}
+                          type={item.type}
+                          size="40"
+                          maxLength = "20"
+                        />
+                        {arr.length === 1 && (
+                          <button
+                            disabled={true}
+                            className="bulleted-button"
+                            onClick={() => deleteInput(i)}
+                          >
+                            -
+                          </button>
+                        )}
+                        {arr.length > 1 && (
+                          <button
+                            className="bulleted-button"
+                            onClick={() => deleteInput(i)}
+                          >
+                            -
+                          </button>
+                        )}
+                        {arr.length - 1 === i && (
+                          <button
+                            disabled={item.value === ""}
+                            className="bulleted-button"
+                            onClick={addInput}
+                          >
+                            Add Bullets
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  );
+                })}
+              {showBulletErr && (
+                <p className="error-text bullet-error-text">
+                  Please enter a value.
+                </p>
+              )}
+            </div>
+            <div>
+              {btnarr &&
+                btnarr.length > 0 &&
+                btnarr.map((item, i) => {
+                  return (
+                    <ul key={i} className={buttonClasses}>
+                      <li>
+                        <button>{item.type + " " + `${i + 1}`}</button>
+                        {btnarr.length === 1 && (
+                          <button
+                            disabled={true}
+                            className="bulleted-button"
+                            onClick={() => deleteButtons(i)}
+                          >
+                            -
+                          </button>
+                        )}
+                        {btnarr.length > 1 && (
+                          <button
+                            className="bulleted-button"
+                            onClick={() => deleteButtons(i)}
+                          >
+                            -
+                          </button>
+                        )}
+                        {btnarr.length - 1 === i && (
+                          <button
+                            disabled={!formIsValid}
+                            className="bulleted-button"
+                            onClick={addButtons}
+                          >
+                            Add Buttons
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  );
+                })}
+            </div>
           </div>
-          <div className={urlClasses}>
-            <label htmlFor="url">URL</label>
-            <input
-              type="text"
-              id="url"
-              value={urlValue}
-              onChange={urlChangeHandler}
-              onBlur={urlBlurHandler}
-            />
-            {urlHasError && <p className="error-text">Please enter a URL.</p>}
+          <div className="form-actions">
+            <button disabled={!formIsValid}>Submit</button>
           </div>
-          <div className={titleClasses}>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              value={titleValue}
-              onChange={titleChangeHandler}
-              onBlur={titleBlurHandler}
-            />
-            {titleHasError && (
-              <p className="error-text">Please enter a Title.</p>
-            )}
-          </div>
-          <div>
-            {arr &&
-              arr.length > 0 &&
-              arr.map((item, i) => {
-                return (
-                  <ul key={i} className={bulletClasses}>
-                    <li>
-                      <input
-                        onChange={handleChange}
-                        value={item.value}
-                        id={i}
-                        type={item.type}
-                        size="40"
-                      />
-                      {arr.length === 1 && (
-                        <button
-                          disabled={true}
-                          className="bulleted-button"
-                          onClick={() => deleteInput(i)}
-                        >
-                          -
-                        </button>
-                      )}
-                      {arr.length > 1 && (
-                        <button
-                          className="bulleted-button"
-                          onClick={() => deleteInput(i)}
-                        >
-                          -
-                        </button>
-                      )}
-                      {arr.length - 1 === i && (
-                        <button
-                          disabled={item.value === ""}
-                          className="bulleted-button"
-                          onClick={addInput}
-                        >
-                          Add Bullets
-                        </button>
-                      )}
-                    </li>
-                  </ul>
-                );
-              })}
-            {showBulletErr && (
-              <p className="error-text bullet-error-text">
-                Please enter a value.
-              </p>
-            )}
-          </div>
-          <div>
-            {btnarr &&
-              btnarr.length > 0 &&
-              btnarr.map((item, i) => {
-                return (
-                  <ul key={i} className={buttonClasses}>
-                    <li>
-                      <button>{item.type + " " + `${i + 1}`}</button>
-                      {btnarr.length === 1 && (
-                        <button
-                          disabled={true}
-                          className="bulleted-button"
-                          onClick={() => deleteButtons(i)}
-                        >
-                          -
-                        </button>
-                      )}
-                      {btnarr.length > 1 && (
-                        <button
-                          className="bulleted-button"
-                          onClick={() => deleteButtons(i)}
-                        >
-                          -
-                        </button>
-                      )}
-                      {btnarr.length - 1 === i && (
-                        <button
-                          disabled={!formIsValid}
-                          className="bulleted-button"
-                          onClick={addButtons}
-                        >
-                          Add Buttons
-                        </button>
-                      )}
-                    </li>
-                  </ul>
-                );
-              })}
-          </div>
-        </div>
-        <div className="form-actions">
-          <button disabled={!formIsValid}>
-            Submit
-          </button>
-        </div>
-      </form>
-      <Preview formValue={formCtx} />
-    </div>
+        </form>
+        <Preview formValue={formCtx} />
+      </div>
+      {
+        keys.length > 0 && <TableView keys={keys} />
+      }
+    </React.Fragment>
   );
 };
 

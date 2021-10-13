@@ -1,43 +1,45 @@
-import React, { Fragment, useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import "./tableview.scss";
-class TableView extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
 
-  componentDidUpdate() {
-    try {
-    } catch (err) {
-      console.log(err);
-    }
-  }
+const TableView = (props) => {
+  const arr = [1, 2, 3, 4, 5];
+  return (
+    <React.Fragment>
+      <div className="table-wrapper">
+        <h2>Saved Url's</h2>
 
-  componentDidUpdate() {}
-
-  render() {
-    return (
-      <React.Fragment>
-        <div className="table-wrapper">
-          <h2>Saved Url's</h2>
-
-          <table>
-            <tbody>
-              <tr>
-                <th>URL</th>
-                <th>Title</th>
-                <th>Bullets</th>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                <p>URL</p>
+              </th>
+              <th>
+                <p>Title</p>
+              </th>
+              <th>
+                <p>Bullets</p>
+              </th>
+            </tr>
+            {props.keys.map((key, index) => (
+              <tr key={key.id}>
+                <td>{key.url}</td>
+                <td>{key.title}</td>
+                <td>
+                  { 
+                    key.bulletPoints &&
+                    key.bulletPoints.length > 0 &&
+                    key.bulletPoints.map((bullet,index) => (
+                      <p key={bullet.id}>{bullet.value}</p>
+                    ))
+                  }
+                </td>
               </tr>
-              <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </React.Fragment>
+  );
+};
 export default TableView;
