@@ -132,8 +132,8 @@ const Form = (props) => {
 
     console.log("Submitted!");
 
-    // resetURL();
-    // resetTitle();
+    resetURL();
+    resetTitle();
   };
 
   const urlClasses = urlHasError ? "form-control invalid" : "form-control";
@@ -146,7 +146,7 @@ const Form = (props) => {
       <form onSubmit={submitHandler}>
         <div className="control-group">
           <div className="form-header">
-              <h2>Form</h2>
+            <h2>Form</h2>
           </div>
           <div className={urlClasses}>
             <label htmlFor="url">URL</label>
@@ -204,7 +204,11 @@ const Form = (props) => {
                         </button>
                       )}
                       {arr.length - 1 === i && (
-                        <button className="bulleted-button" onClick={addInput}>
+                        <button
+                          disabled={item.value === ""}
+                          className="bulleted-button"
+                          onClick={addInput}
+                        >
                           Add Bullets
                         </button>
                       )}
@@ -212,7 +216,11 @@ const Form = (props) => {
                   </ul>
                 );
               })}
-            {showBulletErr &&  <p className="error-text bullet-error-text">Please enter a value.</p>}
+            {showBulletErr && (
+              <p className="error-text bullet-error-text">
+                Please enter a value.
+              </p>
+            )}
           </div>
           <div>
             {btnarr &&
@@ -241,6 +249,7 @@ const Form = (props) => {
                       )}
                       {btnarr.length - 1 === i && (
                         <button
+                          disabled={!formIsValid}
                           className="bulleted-button"
                           onClick={addButtons}
                         >
@@ -253,9 +262,10 @@ const Form = (props) => {
               })}
           </div>
         </div>
-
         <div className="form-actions">
-          <button disabled={!formIsValid}>Submit</button>
+          <button disabled={!formIsValid}>
+            Submit
+          </button>
         </div>
       </form>
       <Preview formValue={formCtx} />
