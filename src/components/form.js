@@ -134,6 +134,8 @@ const Form = (props) => {
 
     resetURL();
     resetTitle();
+    setArr(BulletArr);
+    setBtnArr(ButtonArr);
   };
 
   const urlClasses = urlHasError ? "form-control invalid" : "form-control";
