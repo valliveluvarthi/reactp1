@@ -23,7 +23,7 @@ const TableView = (props) => {
                 </th>
               </tr>
               {props.keys.map((key, index) => (
-                <tr key={key.id}>
+                <tr key={key.id} onClick={()=> props.onClickOfTableRow(key)}>
                   <td>
                     <p>{key.url}</p>
                   </td>

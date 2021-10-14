@@ -10,11 +10,13 @@ toast.configure();
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Form = (props) => {
+  var [urlValue, setUrlValue] = useState("");
+  var [titleValue, setTitleValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showBulletErr, setBulletErr] = useState(false);
   var [keys, setKeys] = useState([]);
-  var [apidata, setApidata] = useState({});
+  var [rowDetails, setRowDetails] = useState({});
 
   //fetching initial data
   const fetchFormHandler = useCallback(async () => {
@@ -48,6 +50,11 @@ const Form = (props) => {
   useEffect(() => {
     fetchFormHandler();
   }, [fetchFormHandler]);
+
+  useEffect(() => {
+    console.log("in  useEffect", rowDetails);
+    onClickOfTableRow(rowDetails);
+  }, [rowDetails]);
 
   var {
     value: urlValue,
@@ -173,47 +180,96 @@ const Form = (props) => {
       bulletPoints: formCtx.bulltePoints,
       button: formCtx.button,
     };
-    const response = await fetch(
-      "https://react-course-3478b-default-rtdb.firebaseio.com/form.json",
-      {
-        method: "POST",
-        body: JSON.stringify(postObject),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    if (data && data.name) {
-      toast.success("Form submitted successfully!", {
-        position: toast.POSITION.BOTTOM_CENTER,
+    if (Object.keys(rowDetails).length > 0) {
+      let url = `https://react-course-3478b-default-rtdb.firebaseio.com/form/${rowDetails.id}`;
+      const response = await fetch(
+        url,
+        {
+          method: "PUT",
+          body: JSON.stringify(postObject),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+        }
+      ).catch(err => {
+        throw new Error(err)
       });
-      try {
-        const response = await fetch(
-          "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
-        );
-        if (!response.ok) {
-          throw new Error("Something went wrong!");
+      const data = await response.json();
+      if (data && data.name) {
+        toast.success("Form updated successfully!", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+        try {
+          const response = await fetch(
+            "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
+          );
+          if (!response.ok) {
+            throw new Error("Something went wrong!");
+          }
+          const loadedFormData = [];
+          const fetcheddata = await response.json();
+          for (const key in fetcheddata) {
+            loadedFormData.push({
+              id: key,
+              url: fetcheddata[key].url,
+              title: fetcheddata[key].title,
+              bulletPoints: fetcheddata[key].bulletPoints,
+              button: fetcheddata[key].button,
+            });
+          }
+          setKeys(loadedFormData);
+        } catch (err) {
+          console.log(err);
         }
-        const loadedFormData = [];
-        const fetcheddata = await response.json();
-        for (const key in fetcheddata) {
-          loadedFormData.push({
-            id: key,
-            url: fetcheddata[key].url,
-            title: fetcheddata[key].title,
-            bulletPoints: fetcheddata[key].bulletPoints,
-            button: fetcheddata[key].button,
-          });
-        }
-        setKeys(loadedFormData);
-      } catch (err) {
-        console.log(err);
+        formCtx.url = "";
+        formCtx.title = "";
+        formCtx.bulltePoints = [];
+        formCtx.button = [];
       }
-      formCtx.url = "";
-      formCtx.title = "";
-      formCtx.bulltePoints = [];
-      formCtx.button = [];
+    } else {
+      const response = await fetch(
+        "https://react-course-3478b-default-rtdb.firebaseio.com/form.json",
+        {
+          method: "POST",
+          body: JSON.stringify(postObject),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data && data.name) {
+        toast.success("Form submitted successfully!", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+        try {
+          const response = await fetch(
+            "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
+          );
+          if (!response.ok) {
+            throw new Error("Something went wrong!");
+          }
+          const loadedFormData = [];
+          const fetcheddata = await response.json();
+          for (const key in fetcheddata) {
+            loadedFormData.push({
+              id: key,
+              url: fetcheddata[key].url,
+              title: fetcheddata[key].title,
+              bulletPoints: fetcheddata[key].bulletPoints,
+              button: fetcheddata[key].button,
+            });
+          }
+          setKeys(loadedFormData);
+        } catch (err) {
+          console.log(err);
+        }
+        formCtx.url = "";
+        formCtx.title = "";
+        formCtx.bulltePoints = [];
+        formCtx.button = [];
+      }
     }
     resetURL();
     resetTitle();
@@ -226,6 +282,21 @@ const Form = (props) => {
   const bulletClasses = "list";
   const buttonClasses = "btn-list";
 
+  const onClickOfTableRow = (rowDetails) => {
+    console.log("in  fuction", rowDetails);
+    if (Object.keys(rowDetails).length > 0) {
+      setRowDetails(rowDetails);
+      urlChangeHandler(rowDetails.url);
+      formCtx.url = rowDetails.url;
+      titleChangeHandler(rowDetails.title);
+      formCtx.title = rowDetails.title;
+      formCtx.bulltePoints = rowDetails.bulletPoints;
+      setArr(formCtx.bulltePoints);
+      setBtnArr(rowDetails.button);
+      formCtx.button = rowDetails.button;
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="from-preview-look">
@@ -236,6 +307,7 @@ const Form = (props) => {
             </div>
             <div className={urlClasses}>
               <label htmlFor="url">URL</label>
+              {console.log("near input", urlValue)}
               <input
                 type="text"
                 id="url"
@@ -357,9 +429,7 @@ const Form = (props) => {
         <Preview formValue={formCtx} />
       </div>
       {keys.length > 0 && (
-        <TableView
-          keys={keys}
-        />
+        <TableView onClickOfTableRow={onClickOfTableRow} keys={keys} />
       )}
     </React.Fragment>
   );
