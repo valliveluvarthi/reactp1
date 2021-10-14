@@ -8,40 +8,40 @@ const TableView = (props) => {
       <div className="table-wrapper">
         <h2>Saved Url's</h2>
 
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                <p>URL</p>
-              </th>
-              <th>
-                <p>Title</p>
-              </th>
-              <th>
-                <p>Bullets</p>
-              </th>
-            </tr>
-            {props.keys.map((key, index) => (
-              <tr key={key.id}>
-                <td>
-                  <p>{key.url}</p>
-                </td>
-                <td>
-                  <p>{key.title}</p>
-                </td>
-                <td>
-                  { 
-                    key.bulletPoints &&
-                    key.bulletPoints.length > 0 &&
-                    key.bulletPoints.map((bullet,index) => (
-                      <p key={bullet.id}>{bullet.value}</p>
-                    ))
-                  }
-                </td>
+        <div className="table-content">
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  <p>URL</p>
+                </th>
+                <th>
+                  <p>Title</p>
+                </th>
+                <th>
+                  <p>Bullets</p>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+              {props.keys.map((key, index) => (
+                <tr key={key.id}>
+                  <td>
+                    <p>{key.url}</p>
+                  </td>
+                  <td>
+                    <p>{key.title}</p>
+                  </td>
+                  <td>
+                    {key.bulletPoints &&
+                      key.bulletPoints.length > 0 &&
+                      key.bulletPoints.map((bullet, index) => (
+                        <p key={bullet.id}>{bullet.value}</p>
+                      ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </React.Fragment>
   );
