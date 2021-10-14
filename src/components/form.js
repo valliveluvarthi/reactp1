@@ -23,9 +23,7 @@ const Form = (props) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(
-        "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
-      );
+      const response = await fetch("http://localhost:3001/form");
       if (!response.ok) {
         throw new Error("Something went wrong!");
       }
@@ -33,7 +31,7 @@ const Form = (props) => {
       const data = await response.json();
       for (const key in data) {
         loadedFormData.push({
-          id: key,
+          id: data[key].id,
           url: data[key].url,
           title: data[key].title,
           bulletPoints: data[key].bulletPoints,
@@ -41,6 +39,7 @@ const Form = (props) => {
         });
       }
       setKeys(loadedFormData);
+      localStorage.setItem("id", loadedFormData[loadedFormData.length-1].id);
     } catch (error) {
       setError(error.message);
     }
@@ -174,102 +173,98 @@ const Form = (props) => {
       return;
     }
 
-    const postObject = {
-      url: formCtx.url,
-      title: formCtx.title,
-      bulletPoints: formCtx.bulltePoints,
-      button: formCtx.button,
-    };
     if (Object.keys(rowDetails).length > 0) {
-      let url = `https://react-course-3478b-default-rtdb.firebaseio.com/form/${rowDetails.id}`;
-      const response = await fetch(
-        url,
-        {
-          method: "PUT",
-          body: JSON.stringify(postObject),
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json; charset=UTF-8'
-          },
-        }
-      ).catch(err => {
-        throw new Error(err)
+      const postObject = {
+        id: rowDetails.id,
+        url: formCtx.url,
+        title: formCtx.title,
+        bulletPoints: formCtx.bulltePoints,
+        button: formCtx.button,
+      };
+      let url = `http://localhost:3001/form/${rowDetails.id}`;
+      const response = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(postObject),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      }).catch((err) => {
+        throw new Error(err);
       });
-      const data = await response.json();
-      if (data && data.name) {
-        toast.success("Form updated successfully!", {
-          position: toast.POSITION.BOTTOM_CENTER,
-        });
-        try {
-          const response = await fetch(
-            "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
-          );
-          if (!response.ok) {
-            throw new Error("Something went wrong!");
-          }
-          const loadedFormData = [];
-          const fetcheddata = await response.json();
-          for (const key in fetcheddata) {
-            loadedFormData.push({
-              id: key,
-              url: fetcheddata[key].url,
-              title: fetcheddata[key].title,
-              bulletPoints: fetcheddata[key].bulletPoints,
-              button: fetcheddata[key].button,
-            });
-          }
-          setKeys(loadedFormData);
-        } catch (err) {
-          console.log(err);
+      toast.success("Form updated successfully!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+      setRowDetails({});
+      try {
+        const response = await fetch("http://localhost:3001/form");
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
         }
-        formCtx.url = "";
-        formCtx.title = "";
-        formCtx.bulltePoints = [];
-        formCtx.button = [];
+        const loadedFormData = [];
+        const fetcheddata = await response.json();
+        for (const key in fetcheddata) {
+          loadedFormData.push({
+            id: key,
+            url: fetcheddata[key].url,
+            title: fetcheddata[key].title,
+            bulletPoints: fetcheddata[key].bulletPoints,
+            button: fetcheddata[key].button,
+          });
+        }
+        setKeys(loadedFormData);
+      } catch (err) {
+        console.log(err);
       }
+      formCtx.url = "";
+      formCtx.title = "";
+      formCtx.bulltePoints = [];
+      formCtx.button = [];
     } else {
-      const response = await fetch(
-        "https://react-course-3478b-default-rtdb.firebaseio.com/form.json",
-        {
-          method: "POST",
-          body: JSON.stringify(postObject),
-          headers: {
-            "Content-Type": "application/json",
-          },
+      let id = localStorage.getItem("id");
+      id = parseInt(id) + 1;
+      localStorage.setItem("id", id);
+      const postObject = {
+        id: id,
+        url: formCtx.url,
+        title: formCtx.title,
+        bulletPoints: formCtx.bulltePoints,
+        button: formCtx.button,
+      };
+      const response = await fetch("http://localhost:3001/form", {
+        method: "POST",
+        body: JSON.stringify(postObject),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      toast.success("Form submitted successfully!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+      try {
+        const response = await fetch("http://localhost:3001/form");
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
         }
-      );
-      const data = await response.json();
-      if (data && data.name) {
-        toast.success("Form submitted successfully!", {
-          position: toast.POSITION.BOTTOM_CENTER,
-        });
-        try {
-          const response = await fetch(
-            "https://react-course-3478b-default-rtdb.firebaseio.com/form.json"
-          );
-          if (!response.ok) {
-            throw new Error("Something went wrong!");
-          }
-          const loadedFormData = [];
-          const fetcheddata = await response.json();
-          for (const key in fetcheddata) {
-            loadedFormData.push({
-              id: key,
-              url: fetcheddata[key].url,
-              title: fetcheddata[key].title,
-              bulletPoints: fetcheddata[key].bulletPoints,
-              button: fetcheddata[key].button,
-            });
-          }
-          setKeys(loadedFormData);
-        } catch (err) {
-          console.log(err);
+        const loadedFormData = [];
+        const fetcheddata = await response.json();
+        for (const key in fetcheddata) {
+          loadedFormData.push({
+            id: fetcheddata[key].id,
+            url: fetcheddata[key].url,
+            title: fetcheddata[key].title,
+            bulletPoints: fetcheddata[key].bulletPoints,
+            button: fetcheddata[key].button,
+          });
         }
-        formCtx.url = "";
-        formCtx.title = "";
-        formCtx.bulltePoints = [];
-        formCtx.button = [];
+        setKeys(loadedFormData);
+      } catch (err) {
+        console.log(err);
       }
+      formCtx.url = "";
+      formCtx.title = "";
+      formCtx.bulltePoints = [];
+      formCtx.button = [];
     }
     resetURL();
     resetTitle();

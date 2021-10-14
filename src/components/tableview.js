@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./tableview.scss";
 
 const TableView = (props) => {
-  const arr = [1, 2, 3, 4, 5];
   return (
     <React.Fragment>
       <div className="table-wrapper">
@@ -23,6 +22,7 @@ const TableView = (props) => {
                 </th>
               </tr>
               {props.keys.map((key, index) => (
+                console.log(props),
                 <tr key={key.id} onClick={()=> props.onClickOfTableRow(key)}>
                   <td>
                     <p>{key.url}</p>
