@@ -7,6 +7,9 @@
     justify-content: space-around;
     margin: 3rem;
   }
+  @media screen and (max-width : 350px) {
+    margin: 2rem;
+  }
 }
 .form {
   align-self: center;
@@ -44,6 +47,10 @@
   border: 1px solid #ccc;
   width: 20rem;
   max-width: 100%;
+
+  @media screen and (max-width : 350px) {
+    width: 15rem;
+  }
 }
 
 .form-control input:focus {
@@ -139,6 +146,13 @@ button:disabled:active {
   border: 1px solid #ccc;
   width: 20rem;
   max-width: 100%;
+
+  @media screen and (max-width: 504px) {
+    width: 17rem;
+  }
+  @media screen and (max-width: 455px) {
+    width: 14rem;
+  }
 }
 
 .list input:focus {
@@ -152,4 +166,7 @@ button:disabled:active {
 img {
   height: 10rem;
   width: auto;
+  @media screen and (max-width: 455px) {
+    height: 8rem;
+  }
 }

@@ -1,5 +1,9 @@
 .table-wrapper{
     padding: 0 7rem;
+
+    @media screen and (max-width : 1008px) {
+        padding: 0 2rem;
+    }
 }
 h2{
     color: #fff;
