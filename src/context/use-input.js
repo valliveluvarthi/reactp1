@@ -34,11 +34,9 @@ const useInput = (validateValue) => {
     } else {
       if (event.target.id === "url") {
         formCtx.url = event.target.value;
-        console.log("formCtx updated", formCtx.url);
       }
       if (event.target.id === "title") {
         formCtx.title = event.target.value;
-        console.log("formCtx updated", formCtx.title);
       }
       dispatch({ type: "INPUT", value: event.target.value });
     }

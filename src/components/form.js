@@ -23,23 +23,38 @@ const Form = (props) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:3001/form");
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
+      // const response = await fetch("http://localhost:3001/form");
+      // if (!response.ok) {
+      //   throw new Error("Something went wrong!");
+      // }
+      // const loadedFormData = [];
+      // const data = await response.json();
+      // for (const key in data) {
+      //   loadedFormData.push({
+      //     id: data[key].id,
+      //     url: data[key].url,
+      //     title: data[key].title,
+      //     bulletPoints: data[key].bulletPoints,
+      //     button: data[key].button,
+      //   });
+      // }
       const loadedFormData = [];
-      const data = await response.json();
-      for (const key in data) {
+      var postDataArr = [];
+      var localFormArr = localStorage.getItem("formDataArr");
+      if (localFormArr != null && localFormArr != "") {
+        postDataArr = JSON.parse(localFormArr);
+      }
+      for (const key in postDataArr) {
         loadedFormData.push({
-          id: data[key].id,
-          url: data[key].url,
-          title: data[key].title,
-          bulletPoints: data[key].bulletPoints,
-          button: data[key].button,
+          id: postDataArr[key].id,
+          url: postDataArr[key].url,
+          title: postDataArr[key].title,
+          bulletPoints: postDataArr[key].bulletPoints,
+          button: postDataArr[key].button,
         });
       }
       setKeys(loadedFormData);
-      localStorage.setItem("id", loadedFormData[loadedFormData.length-1].id);
+      localStorage.setItem("id", loadedFormData[loadedFormData.length - 1].id);
     } catch (error) {
       setError(error.message);
     }
@@ -51,7 +66,6 @@ const Form = (props) => {
   }, [fetchFormHandler]);
 
   useEffect(() => {
-    console.log("in  useEffect", rowDetails);
     onClickOfTableRow(rowDetails);
   }, [rowDetails]);
 
@@ -181,35 +195,59 @@ const Form = (props) => {
         bulletPoints: formCtx.bulltePoints,
         button: formCtx.button,
       };
-      let url = `http://localhost:3001/form/${rowDetails.id}`;
-      const response = await fetch(url, {
-        method: "PUT",
-        body: JSON.stringify(postObject),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json; charset=UTF-8",
-        },
-      }).catch((err) => {
-        throw new Error(err);
-      });
+      var postDataArr = [];
+      var localFormArr = localStorage.getItem("formDataArr");
+      if (localFormArr != null && localFormArr != "") {
+        postDataArr = JSON.parse(localFormArr);
+      }
+      var index = postDataArr.findIndex(p => p.id == postObject.id);
+      postDataArr.splice(index,1)
+
+      postDataArr.push(postObject);
+      localStorage.setItem("formDataArr", JSON.stringify(postDataArr));
+
+      // let url = `http://localhost:3001/form/${rowDetails.id}`;
+      // const response = await fetch(url, {
+      //   method: "PUT",
+      //   body: JSON.stringify(postObject),
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-Type": "application/json; charset=UTF-8",
+      //   },
+      // }).catch((err) => {
+      //   throw new Error(err);
+      // });
       toast.success("Form updated successfully!", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
       setRowDetails({});
       try {
-        const response = await fetch("http://localhost:3001/form");
-        if (!response.ok) {
-          throw new Error("Something went wrong!");
-        }
+        // const response = await fetch("http://localhost:3001/form");
+        // if (!response.ok) {
+        //   throw new Error("Something went wrong!");
+        // }
+        // const fetcheddata = await response.json();
+        // for (const key in fetcheddata) {
+        //   loadedFormData.push({
+        //     id: key,
+        //     url: fetcheddata[key].url,
+        //     title: fetcheddata[key].title,
+        //     bulletPoints: fetcheddata[key].bulletPoints,
+        //     button: fetcheddata[key].button,
+        //   });
+        // }
         const loadedFormData = [];
-        const fetcheddata = await response.json();
-        for (const key in fetcheddata) {
+        var localFormArr = localStorage.getItem("formDataArr");
+        if (localFormArr != null && localFormArr != "") {
+          postDataArr = JSON.parse(localFormArr);
+        }
+        for (const key in postDataArr) {
           loadedFormData.push({
-            id: key,
-            url: fetcheddata[key].url,
-            title: fetcheddata[key].title,
-            bulletPoints: fetcheddata[key].bulletPoints,
-            button: fetcheddata[key].button,
+            id: postDataArr[key].id,
+            url: postDataArr[key].url,
+            title: postDataArr[key].title,
+            bulletPoints: postDataArr[key].bulletPoints,
+            button: postDataArr[key].button,
           });
         }
         setKeys(loadedFormData);
@@ -231,30 +269,52 @@ const Form = (props) => {
         bulletPoints: formCtx.bulltePoints,
         button: formCtx.button,
       };
-      const response = await fetch("http://localhost:3001/form", {
-        method: "POST",
-        body: JSON.stringify(postObject),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      var postDataArr = [];
+      var localFormArr = localStorage.getItem("formDataArr");
+      if (localFormArr != null && localFormArr != "") {
+        postDataArr = JSON.parse(localFormArr);
+      }
+      postDataArr.push(postObject);
+      localStorage.setItem("formDataArr", JSON.stringify(postDataArr));
+      // const response = await fetch("http://localhost:3001/form", {
+      //   method: "POST",
+      //   body: JSON.stringify(postObject),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
       toast.success("Form submitted successfully!", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
       try {
-        const response = await fetch("http://localhost:3001/form");
-        if (!response.ok) {
-          throw new Error("Something went wrong!");
-        }
+        // const response = await fetch("http://localhost:3001/form");
+        // if (!response.ok) {
+        //   throw new Error("Something went wrong!");
+        // }
+
+        // const fetcheddata = await response.json();
+        // for (const key in fetcheddata) {
+        //   loadedFormData.push({
+        //     id: fetcheddata[key].id,
+        //     url: fetcheddata[key].url,
+        //     title: fetcheddata[key].title,
+        //     bulletPoints: fetcheddata[key].bulletPoints,
+        //     button: fetcheddata[key].button,
+        //   });
+        // }
         const loadedFormData = [];
-        const fetcheddata = await response.json();
-        for (const key in fetcheddata) {
+        var localFormArr = localStorage.getItem("formDataArr");
+        if (localFormArr != null  && localFormArr != "") {
+          postDataArr = JSON.parse(localFormArr);
+        }
+
+        for (const key in postDataArr) {
           loadedFormData.push({
-            id: fetcheddata[key].id,
-            url: fetcheddata[key].url,
-            title: fetcheddata[key].title,
-            bulletPoints: fetcheddata[key].bulletPoints,
-            button: fetcheddata[key].button,
+            id: postDataArr[key].id,
+            url: postDataArr[key].url,
+            title: postDataArr[key].title,
+            bulletPoints: postDataArr[key].bulletPoints,
+            button: postDataArr[key].button,
           });
         }
         setKeys(loadedFormData);
@@ -278,7 +338,6 @@ const Form = (props) => {
   const buttonClasses = "btn-list";
 
   const onClickOfTableRow = (rowDetails) => {
-    console.log("in  fuction", rowDetails);
     if (Object.keys(rowDetails).length > 0) {
       setRowDetails(rowDetails);
       urlChangeHandler(rowDetails.url);
@@ -302,7 +361,6 @@ const Form = (props) => {
             </div>
             <div className={urlClasses}>
               <label htmlFor="url">URL</label>
-              {console.log("near input", urlValue)}
               <input
                 type="text"
                 id="url"

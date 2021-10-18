@@ -7,13 +7,13 @@ const TableView = (props) => {
       <div className="table-wrapper">
         <h2>Saved Url's</h2>
 
-        <div className="table-content">
+        <div className={(props.keys.length > 8) ? "table-content" : ""}>
           <table>
             <tbody>
               <tr>
-                <th>
+                {/* <th>
                   <p>URL</p>
-                </th>
+                </th> */}
                 <th>
                   <p>Title</p>
                 </th>
@@ -24,9 +24,9 @@ const TableView = (props) => {
               {props.keys.map((key, index) => (
                 console.log(props),
                 <tr key={key.id} onClick={()=> props.onClickOfTableRow(key)}>
-                  <td>
+                  {/* <td>
                     <p>{key.url}</p>
-                  </td>
+                  </td> */}
                   <td>
                     <p>{key.title}</p>
                   </td>
