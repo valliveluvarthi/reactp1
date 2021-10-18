@@ -26,7 +26,7 @@ const Preview = (props) => {
         <div className="title-text">
           <p>{titleValue}</p>
         </div>
-        <div>
+        <div className="bullet-text">
           {bulletArr &&
             bulletArr.length > 0 &&
             bulletArr.map((item, i) => {

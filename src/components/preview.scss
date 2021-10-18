@@ -4,6 +4,9 @@
     width: 28%;
     color: #fff;
     margin-top: 0.4rem;
+    @media screen and (max-width: 1000px) {
+        width: auto;
+    }
 }
 .block-header{
     text-align: center;
@@ -26,6 +29,9 @@
     border-radius: 4px;
     cursor: pointer;
     width: 80%;
+    @media screen and (max-width: 1000px) {
+        width: 35%;
+    }
 }
 
 .preview-button:hover,
@@ -39,3 +45,6 @@
     cursor: pointer;
 }
 
+.bullet-text{
+    align-self: center;
+}

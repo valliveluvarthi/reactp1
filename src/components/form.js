@@ -295,7 +295,7 @@ const Form = (props) => {
   return (
     <React.Fragment>
       <div className="from-preview-look">
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="form">
           <div className="control-group">
             <div className="form-header">
               <h2>Form</h2>
