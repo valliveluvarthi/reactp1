@@ -31,3 +31,14 @@ button:active {
   background-color: #460897;
   border-color: #460897;
 }
+
+.app-content{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.nav-link{
+  color: aliceblue;
+  margin: 2rem;
+  text-decoration: none;
+}
