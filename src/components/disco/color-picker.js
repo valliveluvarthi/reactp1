@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ColorPickerName from "./color-name";
 import "./color-picker.scss";
 
@@ -7,6 +7,9 @@ const ColorPicker = (props) => {
   let dupPickers = [];
   let [totalPickers, setTotalPickers] = useState([]);
   let colorIdArr = [];
+  useEffect(() => {
+    onChangeOfCircles(props.noOfCircles);
+  }, [props.noOfCircles]);
   for (let i = 0; i < props.noOfCircles; i++) {
     element.push(i);
     let pushObj = {};
@@ -16,20 +19,25 @@ const ColorPicker = (props) => {
     };
     dupPickers.push(pushObj);
   }
- 
+  const onChangeOfCircles = (noOfCircles) => {
+    console.log(noOfCircles);
+    element = [];
+    dupPickers = [];
+    setTotalPickers(totalPickers = []);
+    colorIdArr = [];
+  };
   const colorChangeHandler = (event) => {
     colorIdArr.push(event.target.id);
     if (totalPickers.length === 0) {
-        totalPickers = dupPickers;
+      totalPickers = dupPickers;
     }
-    let updatedList = totalPickers.map(item => 
-        {
-          if (item.id ==  event.target.id){
-            return {...item, value: event.target.value};
-          }
-          return item;
-        });
-    setTotalPickers(totalPickers = updatedList);
+    let updatedList = totalPickers.map((item) => {
+      if (item.id == event.target.id) {
+        return { ...item, value: event.target.value };
+      }
+      return item;
+    });
+    setTotalPickers((totalPickers = updatedList));
   };
   return (
     <React.Fragment>

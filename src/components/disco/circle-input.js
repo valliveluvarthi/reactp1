@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ColorPicker from "./color-picker";
 import './circle-input.scss';
 const CircleInput = () => {
-    let [circleInputValue, setCircleInputValue] = useState(0);
+    let [circleInputValue, setCircleInputValue] = useState(1);
     let [inputHasError, setInputHasError] = useState(false);
     let [maxInputError, setMaxInputError] = useState(false);
     const circleInputChangeHandler = (event) => {
