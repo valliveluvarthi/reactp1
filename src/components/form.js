@@ -12,8 +12,6 @@ toast.configure();
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Form = (props) => {
-  let [urlValue, setUrlValue] = useState("");
-  let [titleValue, setTitleValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showBulletErr, setBulletErr] = useState(false);

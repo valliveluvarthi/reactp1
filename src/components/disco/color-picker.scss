@@ -1,0 +1,27 @@
+.color-picker-content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+h3 {
+  color: #fff;
+  text-align: center;
+}
+.color-pickers-input {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  margin: 1rem 0;
+  color: #ffffff;
+}
+.color-pickers-input input {
+  height: 3rem;
+  width: 3rem;
+}
+.color-pickers-label {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  color: #fff;
+}
