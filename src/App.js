@@ -1,16 +1,14 @@
 import React from "react";
-import "./App.scss";
-import FormContextProvider from "./context/formProvider";
-import Form from "./components/form";
 import {
   NavLink,
-  Switch,
   BrowserRouter,
   Route,
-  HashRouter,
 } from "react-router-dom";
+import FormContextProvider from "./context/formProvider";
+import Form from "./components/form";
 import CircleInput from "./components/disco/circle-input";
 import history from "./components/disco/history";
+import "./App.scss";
 
 function App(props) {
   localStorage.setItem("id", 0);

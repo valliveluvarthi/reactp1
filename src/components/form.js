@@ -1,22 +1,24 @@
-import useInput from "../context/use-input";
 import React, { useState, useContext, useCallback, useEffect } from "react";
-import FormContext from "../context/form-context";
-import Preview from "./preview";
-import "./form.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FormContext from "../context/form-context";
+import Preview from "./preview";
+import useInput from "../context/use-input";
 import TableView from "./tableview";
+import "./form.scss";
+
+
 toast.configure();
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Form = (props) => {
-  var [urlValue, setUrlValue] = useState("");
-  var [titleValue, setTitleValue] = useState("");
+  let [urlValue, setUrlValue] = useState("");
+  let [titleValue, setTitleValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showBulletErr, setBulletErr] = useState(false);
-  var [keys, setKeys] = useState([]);
-  var [rowDetails, setRowDetails] = useState({});
+  let [keys, setKeys] = useState([]);
+  let [rowDetails, setRowDetails] = useState({});
 
   //fetching initial data
   const fetchFormHandler = useCallback(async () => {
@@ -39,8 +41,8 @@ const Form = (props) => {
       //   });
       // }
       const loadedFormData = [];
-      var postDataArr = [];
-      var localFormArr = localStorage.getItem("formDataArr");
+      let postDataArr = [];
+      let localFormArr = localStorage.getItem("formDataArr");
       if (localFormArr != null && localFormArr != "") {
         postDataArr = JSON.parse(localFormArr);
       }
@@ -69,7 +71,7 @@ const Form = (props) => {
     onClickOfTableRow(rowDetails);
   }, [rowDetails]);
 
-  var {
+  let {
     value: urlValue,
     isValid: urlIsValid,
     hasError: urlHasError,
@@ -78,7 +80,7 @@ const Form = (props) => {
     reset: resetURL,
   } = useInput(isNotEmpty);
 
-  var {
+  let {
     value: titleValue,
     isValid: titleIsValid,
     hasError: titleHasError,
@@ -96,7 +98,7 @@ const Form = (props) => {
       value: "",
     },
   ];
-  var [arr, setArr] = useState(BulletArr);
+  let [arr, setArr] = useState(BulletArr);
 
   const ButtonArr = [
     {
@@ -104,7 +106,7 @@ const Form = (props) => {
       id: 1,
     },
   ];
-  var [btnarr, setBtnArr] = useState(ButtonArr);
+  let [btnarr, setBtnArr] = useState(ButtonArr);
   formCtx.button = btnarr;
   //actions related to input
   const addInput = () => {
@@ -195,12 +197,12 @@ const Form = (props) => {
         bulletPoints: formCtx.bulltePoints,
         button: formCtx.button,
       };
-      var postDataArr = [];
-      var localFormArr = localStorage.getItem("formDataArr");
+      let postDataArr = [];
+      let localFormArr = localStorage.getItem("formDataArr");
       if (localFormArr != null && localFormArr != "") {
         postDataArr = JSON.parse(localFormArr);
       }
-      var index = postDataArr.findIndex(p => p.id == postObject.id);
+      let index = postDataArr.findIndex(p => p.id == postObject.id);
       postDataArr.splice(index,1)
 
       postDataArr.push(postObject);
@@ -237,7 +239,7 @@ const Form = (props) => {
         //   });
         // }
         const loadedFormData = [];
-        var localFormArr = localStorage.getItem("formDataArr");
+        let localFormArr = localStorage.getItem("formDataArr");
         if (localFormArr != null && localFormArr != "") {
           postDataArr = JSON.parse(localFormArr);
         }
@@ -269,8 +271,8 @@ const Form = (props) => {
         bulletPoints: formCtx.bulltePoints,
         button: formCtx.button,
       };
-      var postDataArr = [];
-      var localFormArr = localStorage.getItem("formDataArr");
+      let postDataArr = [];
+      let localFormArr = localStorage.getItem("formDataArr");
       if (localFormArr != null && localFormArr != "") {
         postDataArr = JSON.parse(localFormArr);
       }
@@ -303,7 +305,7 @@ const Form = (props) => {
         //   });
         // }
         const loadedFormData = [];
-        var localFormArr = localStorage.getItem("formDataArr");
+        let localFormArr = localStorage.getItem("formDataArr");
         if (localFormArr != null  && localFormArr != "") {
           postDataArr = JSON.parse(localFormArr);
         }

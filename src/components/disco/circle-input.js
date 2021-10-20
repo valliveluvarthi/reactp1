@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import './circle-input.scss';
 const CircleInput = (props) => {
-    var [circleInputValue, setCircleInputValue] = useState(0);
-    var [inputHasError, setInputHasError] = useState(false);
-    var [maxInputError, setMaxInputError] = useState(false);
+    let [circleInputValue, setCircleInputValue] = useState(0);
+    let [inputHasError, setInputHasError] = useState(false);
+    let [maxInputError, setMaxInputError] = useState(false);
     const circleInputChangeHandler = (event) => {
         console.log(event.target.value);
         if(event.target.value > 0){
