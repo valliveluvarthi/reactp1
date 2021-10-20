@@ -21,9 +21,12 @@ const ColorPicker = (props) => {
   }
   const onChangeOfCircles = (noOfCircles) => {
     console.log(noOfCircles);
+    for (let i = 0; i < dupPickers.length; i++) {
+        document.getElementById(dupPickers[i].id).value = "#000000";
+    }
     element = [];
     dupPickers = [];
-    setTotalPickers(totalPickers = []);
+    setTotalPickers((totalPickers = []));
     colorIdArr = [];
   };
   const colorChangeHandler = (event) => {
