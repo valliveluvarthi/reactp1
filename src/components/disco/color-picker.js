@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ColorPickerName from "./color-name";
+import ColorPickers from "./color-pickers";
 import "./color-picker.scss";
 
 const ColorPicker = (props) => {
@@ -47,18 +48,7 @@ const ColorPicker = (props) => {
       <div className="color-picker-content">
         {element.length > 0 && <h3>Pick the colors</h3>}
         <div className="color-pickers-input">
-          {element.map((i) => {
-            return (
-              <div key={i}>
-                <input
-                  type="color"
-                  id={"favcolor" + i}
-                  name={"favcolor" + i}
-                  onChange={colorChangeHandler}
-                />
-              </div>
-            );
-          })}
+          <ColorPickers element={element} colorChangeHandler={colorChangeHandler}/>
         </div>
         <div className="color-pickers-input">
           <ColorPickerName totalPickers={totalPickers} />
