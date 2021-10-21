@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./circles.scss";
 const Circles = (props) => {
-  console.log(props.element);
+
+  useEffect(() => {
+    console.log("arr changed");
+  }, [props.colorArr]);
+
   return (
     <div className="circles-content">
       {props.startValue &&

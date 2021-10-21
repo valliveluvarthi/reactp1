@@ -12,9 +12,11 @@ const ColorPicker = (props) => {
   let [colorArr, setColorArr] = useState([]);
   let [startValue, setStartValue] = useState(false);
   let colorIdArr = [];
+
   useEffect(() => {
     onChangeOfCircles(props.noOfCircles);
   }, [props.noOfCircles]);
+
   for (let i = 0; i < props.noOfCircles; i++) {
     element.push(i);
     let pushObj = {};
@@ -61,7 +63,8 @@ const ColorPicker = (props) => {
       let shiftedValue = setCircleColorArr.shift();
       setCircleColorArr.push(shiftedValue);
       setColorArr( colorArr = setCircleColorArr );
-    }, 10);
+      console.log(colorArr);
+    }, 1000);
   };
   return (
     <div className="color-picker-content">
