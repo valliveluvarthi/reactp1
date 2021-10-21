@@ -30,6 +30,8 @@ const ColorPicker = (props) => {
     }
     element = [];
     dupPickers = [];
+    setColorArr(colorArr = []);
+    setStartValue(false);
     setTotalPickers((totalPickers = []));
     colorIdArr = [];
   };
