@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ColorPickerName from "./color-name";
 import ColorPickers from "./color-pickers";
+import CircleButton from "./circle-button";
+import Circles from "./circles.js";
 import "./color-picker.scss";
 
 const ColorPicker = (props) => {
   let element = [];
   let dupPickers = [];
   let [totalPickers, setTotalPickers] = useState([]);
+  let [colorArr, setColorArr] = useState([]);
+  let [startValue, setStartValue] = useState(false);
   let colorIdArr = [];
   useEffect(() => {
     onChangeOfCircles(props.noOfCircles);
@@ -21,9 +25,8 @@ const ColorPicker = (props) => {
     dupPickers.push(pushObj);
   }
   const onChangeOfCircles = (noOfCircles) => {
-    console.log(noOfCircles);
     for (let i = 0; i < dupPickers.length; i++) {
-        document.getElementById(dupPickers[i].id).value = "#000000";
+      document.getElementById(dupPickers[i].id).value = "#000000";
     }
     element = [];
     dupPickers = [];
@@ -42,19 +45,41 @@ const ColorPicker = (props) => {
       return item;
     });
     setTotalPickers((totalPickers = updatedList));
+    let cArr = [];
+    for (let t = 0; t < totalPickers.length; t++) {
+      cArr.push(totalPickers[t].value);
+    }
+    setColorArr((colorArr = cArr));
+  };
+  const onStartChangeHandler = () => {
+    setStartValue(true);
+    let setCircleColorArr = [];
+      setCircleColorArr = colorArr;
+    setInterval(() => {
+      let shiftedValue = setCircleColorArr.shift();
+      setCircleColorArr.push(shiftedValue);
+      setColorArr( colorArr = setCircleColorArr );
+    }, 1000);
   };
   return (
-    <React.Fragment>
-      <div className="color-picker-content">
-        {element.length > 0 && <h3>Pick the colors</h3>}
-        <div className="color-pickers-input">
-          <ColorPickers element={element} colorChangeHandler={colorChangeHandler}/>
-        </div>
-        <div className="color-pickers-input">
-          <ColorPickerName totalPickers={totalPickers} />
-        </div>
+    <div className="color-picker-content">
+      {element.length > 0 && <h3>Pick the colors</h3>}
+      <div className="color-pickers-input">
+        <ColorPickers
+          element={element}
+          colorChangeHandler={colorChangeHandler}
+        />
       </div>
-    </React.Fragment>
+      <div className="color-pickers-input">
+        <ColorPickerName totalPickers={totalPickers} />
+      </div>
+      <div className="start-button-div">
+        <CircleButton onStart={onStartChangeHandler} />
+      </div>
+      {
+          startValue && <Circles element={element} colorArr={colorArr} startValue={startValue} />
+      }
+    </div>
   );
 };
 

@@ -1,0 +1,14 @@
+.start-button{
+    outline: none;
+    padding: 1rem;
+    background: aliceblue;
+    color: black;
+    width: 10%;
+  }
+  .start-button:focus,.start-button:hover{
+    outline: none;
+    padding: 1rem;
+    background: rgb(225, 229, 233);
+    color: black;
+    width: 10%;
+  }
