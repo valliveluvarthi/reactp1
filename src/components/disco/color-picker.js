@@ -61,7 +61,7 @@ const ColorPicker = (props) => {
       let shiftedValue = setCircleColorArr.shift();
       setCircleColorArr.push(shiftedValue);
       setColorArr( colorArr = setCircleColorArr );
-    }, 1000);
+    }, 10);
   };
   return (
     <div className="color-picker-content">
