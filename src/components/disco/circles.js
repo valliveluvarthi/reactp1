@@ -16,7 +16,7 @@ const Circles = (props) => {
         props.element.map((i) => {
           return (
             <React.Fragment key={i}>
-              {props.colorArr.length > 0 && <div className="circles" style={{ backgroundColor: `${props.colorArr[i]}` }} />}
+              {props.colorArr.length > 0 && <div className="circles" id={"circles" + i} style={{ backgroundColor: `${props.colorArr[i]}` }} />}
             </React.Fragment>
           );
         })}
