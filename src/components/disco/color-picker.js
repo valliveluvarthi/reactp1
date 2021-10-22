@@ -11,6 +11,7 @@ const ColorPicker = (props) => {
   let [totalPickers, setTotalPickers] = useState([]);
   let [colorArr, setColorArr] = useState([]);
   let [startValue, setStartValue] = useState(false);
+  let [showStart, setshowStart] = useState(false);
   let colorIdArr = [];
 
   useEffect(() => {
@@ -27,15 +28,26 @@ const ColorPicker = (props) => {
     dupPickers.push(pushObj);
   }
   const onChangeOfCircles = (noOfCircles) => {
-    for (let i = 0; i < dupPickers.length; i++) {
-      document.getElementById(dupPickers[i].id).value = "#000000";
-    }
     element = [];
     dupPickers = [];
-    setColorArr(colorArr = []);
+    setColorArr((colorArr = []));
+    localStorage.setItem("colorArr", JSON.stringify(colorArr));
     setStartValue(false);
     setTotalPickers((totalPickers = []));
     colorIdArr = [];
+    setshowStart(false);
+    for (let i = 0; i < noOfCircles; i++) {
+      element.push(i);
+      let pushObj = {};
+      pushObj = {
+        id: "favcolor" + i,
+        value: "#000000",
+      };
+      dupPickers.push(pushObj);
+    }
+    for (let i = 0; i < dupPickers.length; i++) {
+      document.getElementById(dupPickers[i].id).value = "#000000";
+    }
   };
   const colorChangeHandler = (event) => {
     colorIdArr.push(event.target.id);
@@ -53,17 +65,34 @@ const ColorPicker = (props) => {
     for (let t = 0; t < totalPickers.length; t++) {
       cArr.push(totalPickers[t].value);
     }
-    setColorArr((colorArr = cArr));
+    let carray = [...colorArr];
+    carray = cArr;
+    setColorArr((colorArr = carray));
+    setshowStart(true);
+    if(showStart && startValue){
+        onStartChangeHandler();
+    }
   };
   const onStartChangeHandler = () => {
     setStartValue(true);
-    let setCircleColorArr = [];
-      setCircleColorArr = colorArr;
+    let cArr = [];
+    for (let t = 0; t < totalPickers.length; t++) {
+      cArr.push(totalPickers[t].value);
+    }
+    let carray = [...colorArr];
+    carray = cArr;
+    localStorage.setItem("colorArr", JSON.stringify(carray));
+    setColorArr((colorArr = carray));
     setInterval(() => {
-      let shiftedValue = setCircleColorArr.shift();
-      setCircleColorArr.push(shiftedValue);
-      setColorArr( colorArr = setCircleColorArr );
-      console.log(colorArr);
+      var array = localStorage.getItem("colorArr");
+      array = JSON.parse(array);
+      let shiftedArrValue = [];
+      shiftedArrValue = array.splice(array.length - 1, 1);
+      array.unshift(shiftedArrValue[0]);
+      localStorage.setItem("colorArr", JSON.stringify(array));
+      let changeArr = [...colorArr];
+      changeArr = array;
+      setColorArr((colorArr = changeArr));
     }, 1000);
   };
   return (
@@ -78,12 +107,19 @@ const ColorPicker = (props) => {
       <div className="color-pickers-input">
         <ColorPickerName totalPickers={totalPickers} />
       </div>
-      <div className="start-button-div">
-        <CircleButton onStart={onStartChangeHandler} />
-      </div>
-      {
-          startValue && <Circles element={element} colorArr={colorArr} startValue={startValue} />
-      }
+      {showStart && (
+        <div className="start-button-div">
+          <CircleButton onStart={onStartChangeHandler} />
+        </div>
+      )}
+
+      {startValue && (
+        <Circles
+          element={element}
+          colorArr={colorArr}
+          startValue={startValue}
+        />
+      )}
     </div>
   );
 };

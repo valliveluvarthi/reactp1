@@ -8,7 +8,9 @@ const Circles = (props) => {
 
   return (
     <div className="circles-content">
+      {console.log(props.startValue)}
       {props.startValue &&
+      props.colorArr &&
         props.colorArr.length > 0 &&
         props.colorArr[0] !== undefined &&
         props.element.map((i) => {
