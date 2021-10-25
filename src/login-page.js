@@ -1,6 +1,6 @@
 import { Component, React } from "react";
 import { observer } from 'mobx-react';
-import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, NavLink } from 'react-router-dom';
 import HomePage from './components/disco/home-page';
 import GuardedRoute from './guarded-route';
 import "./App.scss";

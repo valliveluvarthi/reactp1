@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./tableview.scss";
 
 const TableView = (props) => {
@@ -22,7 +22,6 @@ const TableView = (props) => {
                 </th>
               </tr>
               {props.keys.map((key, index) => (
-                console.log(props),
                 <tr key={key.id} onClick={()=> props.onClickOfTableRow(key)}>
                   {/* <td>
                     <p>{key.url}</p>

@@ -41,7 +41,7 @@ const Form = (props) => {
       const loadedFormData = [];
       let postDataArr = [];
       let localFormArr = localStorage.getItem("formDataArr");
-      if (localFormArr != null && localFormArr != "") {
+      if (localFormArr !== null && localFormArr !== "") {
         postDataArr = JSON.parse(localFormArr);
       }
       for (const key in postDataArr) {
@@ -197,10 +197,10 @@ const Form = (props) => {
       };
       let postDataArr = [];
       let localFormArr = localStorage.getItem("formDataArr");
-      if (localFormArr != null && localFormArr != "") {
+      if (localFormArr !== null && localFormArr !== "") {
         postDataArr = JSON.parse(localFormArr);
       }
-      let index = postDataArr.findIndex(p => p.id == postObject.id);
+      let index = postDataArr.findIndex(p => p.id === postObject.id);
       postDataArr.splice(index,1)
 
       postDataArr.push(postObject);
@@ -238,7 +238,7 @@ const Form = (props) => {
         // }
         const loadedFormData = [];
         let localFormArr = localStorage.getItem("formDataArr");
-        if (localFormArr != null && localFormArr != "") {
+        if (localFormArr !== null && localFormArr !== "") {
           postDataArr = JSON.parse(localFormArr);
         }
         for (const key in postDataArr) {
@@ -271,7 +271,7 @@ const Form = (props) => {
       };
       let postDataArr = [];
       let localFormArr = localStorage.getItem("formDataArr");
-      if (localFormArr != null && localFormArr != "") {
+      if (localFormArr !== null && localFormArr !== "") {
         postDataArr = JSON.parse(localFormArr);
       }
       postDataArr.push(postObject);
@@ -304,7 +304,7 @@ const Form = (props) => {
         // }
         const loadedFormData = [];
         let localFormArr = localStorage.getItem("formDataArr");
-        if (localFormArr != null  && localFormArr != "") {
+        if (localFormArr !== null  && localFormArr !== "") {
           postDataArr = JSON.parse(localFormArr);
         }
 
