@@ -1,5 +1,5 @@
 .App {
-  background-color: aliceblue;
+  background-color: rgb(116, 118, 119);
 }
 
 section {
@@ -15,11 +15,12 @@ section {
 button {
   font: inherit;
   cursor: pointer;
-  background: #230052;
-  border: 1px solid #230052;
+  background: #838285;
+  border: 1px solid #84808a;
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 20px;
+  outline: none;
 }
 
 button:focus {
@@ -28,17 +29,142 @@ button:focus {
 
 button:hover,
 button:active {
-  background-color: #460897;
-  border-color: #460897;
+  background-color: #665f70;
+  border-color: #58565a;
 }
 
-.app-content{
+.app-content {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-.nav-link{
+.nav-link {
   color: aliceblue;
   margin: 2rem;
   text-decoration: none;
+}
+
+//app.css
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+body {
+  background-color: #525050;
+  padding: 20px;
+  margin: 0;
+}
+h1,
+h2,
+p,
+ul,
+li {
+  font-family: sans-serif;
+}
+ul.header li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}
+ul.header {
+  background-color: #111;
+  padding: 0;
+}
+ul.header li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+}
+.content {
+  background-color: #525050;
+  padding: 20px;
+}
+.content h2 {
+  padding: 0;
+  margin: 0;
+}
+.content li {
+  margin-bottom: 10px;
+}
+
+.column1 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+.logout {
+  text-align: end;
+}
+.form {
+  border: 1px solid rgb(240, 231, 231);
+  padding: 2%;
+}
+.btn-log {
+  width: auto;
+}
+.form-heading {
+  color: #fff;
+  padding-left: 47%;
+}
+.form-labelheading {
+  color: #fff;
+  padding-left: 41%;
+}
+.form .form-labelheading input {
+  outline: none;
+  width: 20%;
+  margin-top: 1%;
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+.btns-div {
+  margin-left: 48%;
+  margin-top: 1%;
+}
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+}
+
+.tab-list-active {
+  background-color: white;
+  border: solid #ccc;
+  border-width: 1px 1px 0 1px;
+}
+
+html {
+  box-sizing: border-box;
+}
+.error-text {
+  font-size: 12px;
+  color: red;
+}
+.formholder {
+  width: 25%;
+}
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+}
+.logout {
+  cursor: pointer;
 }
