@@ -13,7 +13,7 @@ function App(props) {
   const [isAutheticated, setisAutheticated] = useState(false);
 
   function login() {
-    browserHistory.push("/home");
+    browserHistory.push("/cards");
     setisAutheticated(true);
     console.log("loggedInUser:" + isAutheticated);
   }
@@ -37,7 +37,7 @@ function App(props) {
             logout={logout}
           />
           <GuardedRoute
-            path="/home"
+            path="/cards"
             component={HomePage}
             auth={isAutheticated}
             logout={logout}

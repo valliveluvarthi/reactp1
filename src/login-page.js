@@ -68,7 +68,7 @@ class LoginPage extends Component {
           <div className="btns-div">
 
             <button className="btn-log" onClick={this.onLogin}>
-              <NavLink className="nav-link" exact activeClassName="current" to='/home'>Login</NavLink>
+              <NavLink className="nav-link" exact activeClassName="current" to='/cards'>Login</NavLink>
             </button>
 
 
@@ -80,7 +80,7 @@ class LoginPage extends Component {
 
         </form>
         <Switch>
-          <GuardedRoute path='/home' component={HomePage} auth={this.props.auth} />
+          <GuardedRoute path='/cards' component={HomePage} auth={this.props.auth} />
         </Switch>
       </Router>
     );
