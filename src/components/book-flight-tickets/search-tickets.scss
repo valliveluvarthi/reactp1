@@ -1,0 +1,68 @@
+.search-tickets-wrapper {
+  background-image: url("../../assets/worldmap.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: -2rem;
+  height: 140vh;
+  z-index: 1;
+  position: relative;
+  // 1 vh  -	19.2 px
+}
+
+.heading-primary {
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  top: 3rem;
+  margin: 0 16rem;
+  padding: 5rem 0 0 0;
+
+  @media screen and (max-width: 1243px) {
+    top: 2rem;
+    margin: 0 4rem;
+    padding: 4rem 0 0 0;
+  }
+  @media screen and (max-width: 866px) {
+    top: 2rem;
+    margin: 0 2rem;
+    padding: 2rem 0 0 0;
+  }
+  @media screen and (max-width: 600px) {
+    top: 1rem;
+    margin: 0 1rem;
+    padding: 3.5rem 0 0 0;
+  }
+}
+.heading-primary--main {
+  display: block;
+  font-size: 5rem;
+  font-weight: 800;
+  background-image: url("../../assets/textclip.png");
+  -webkit-background-clip: text;
+  color: transparent;
+
+  @media screen and (max-width: 1243px) {
+    font-size: 5rem;
+  }
+  @media screen and (max-width: 795px) {
+    font-size: 4rem;
+  }
+  @media screen and (max-width: 663px) {
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 517px) {
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 378px) {
+    font-size: 1.5rem;
+  }
+}
+.moveup {
+  margin-top: -2rem;
+
+  @media screen and (max-width: 663px) {
+    margin-top: 0;
+  }
+}
