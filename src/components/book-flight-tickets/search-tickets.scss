@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-top: -2rem;
-  height: 140vh;
+  height: 120vh;
   z-index: 1;
   position: relative;
   // 1 vh  -	19.2 px
@@ -65,4 +65,12 @@
   @media screen and (max-width: 663px) {
     margin-top: 0;
   }
+}
+
+.search-div{
+    margin: 6rem 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(5,max-content);
+    align-content: center;
+    justify-content: center;
 }
