@@ -5,7 +5,7 @@ const TableView = (props) => {
   return (
     <React.Fragment>
       <div className="table-wrapper">
-        <h2>Saved Url's</h2>
+        <h2 className="tableview-h2">Saved Url's</h2>
 
         <div className={(props.keys.length > 8) ? "table-content" : ""}>
           <table>
