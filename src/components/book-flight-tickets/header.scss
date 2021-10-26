@@ -1,0 +1,64 @@
+.book-tickets-header-wrapper {
+  padding: 8px 24px;
+  display: grid;
+  grid-template-columns: min-content 1fr repeat(5, max-content);
+  grid-column-gap: 2rem;
+  align-items: center;
+
+  @media screen and (max-width: 710px) {
+    display: grid;
+    grid-template-columns: 0;
+    grid-template-rows: min-content 1fr repeat(5, max-content);
+    grid-row-gap: 1rem;
+  }
+
+  &-dealer_text-div {
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  &-flights-div {
+    color: #605dec;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 21.82px;
+    text-align: center;
+    cursor: pointer;
+
+    @media screen and (max-width: 710px) {
+      margin-left: 1rem;
+    }
+  }
+
+  &-common-div {
+    color: #7c8db0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 21.82px;
+    text-align: center;
+    cursor: pointer;
+
+    @media screen and (max-width: 710px) {
+        margin-left: 1rem;
+        width: max-content;
+    }
+  }
+
+  &-signup-div {
+    background: #605dec;
+    border-radius: 0.3rem;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 21.82px;
+    cursor: pointer;
+
+    @media screen and (max-width: 710px) {
+        width: max-content;
+    }
+  }
+}
