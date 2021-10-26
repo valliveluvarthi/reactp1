@@ -93,6 +93,14 @@ ul.header li a {
   width: 80%;
   padding: 10px;
 }
+
+@media screen and (max-width: 550px) {
+  .column1 h2 {
+    font-size: 14px;
+    color: #ffffff;
+  }
+}
+
 .column2 {
   float: left;
   width: 20%;
@@ -101,10 +109,17 @@ ul.header li a {
 
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .logout {
   text-align: end;
+  cursor: pointer;
+  @media screen and (max-width: 550px) {
+    font-size: 14px;
+    color: #ffffff;
+  }
+  color: #ffffff;
 }
 .form {
   border: 1px solid #a68585;
@@ -163,7 +178,4 @@ html {
 .nav-link {
   text-decoration: none;
   color: #fff;
-}
-.logout {
-  cursor: pointer;
 }
