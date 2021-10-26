@@ -1,54 +1,54 @@
-.preview-look{
-    display: flex;
-    flex-direction: column;
-    width: 28%;
-    color: #fff;
-    margin-top: 0.4rem;
-    @media screen and (max-width: 1000px) {
-        width: auto;
-        margin-top: 2rem;
-    }
+.preview-look {
+  display: flex;
+  flex-direction: column;
+  width: 28%;
+  color: rgb(26, 22, 22);
+  margin-top: 0.4rem;
+  @media screen and (max-width: 1000px) {
+    width: auto;
+    margin-top: 2rem;
+  }
 }
-.block-header{
-    text-align: center;
+.block-header {
+  text-align: center;
 }
-.title-text{
-    text-align: center;
+.title-text {
+  text-align: center;
 }
-.preview-btn-list{
-    text-align: center;
-    list-style: none;
-    padding-left: 0;
+.preview-btn-list {
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
 }
 
 .preview-button {
-    font: inherit;
-    background-color: #240370;
-    color: white;
-    border: 1px solid #240370;
-    padding: 0.5rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 80%;
-    @media screen and (max-width: 1000px) {
-        width: 35%;
-    }
-    @media screen and (max-width: 450px) {
-        width: 52%;
-    }
+  font: inherit;
+  background-color: rgb(160, 149, 149);
+  color: rgb(31, 28, 28);
+  border: 1px solid rgb(126, 116, 116);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80%;
+  @media screen and (max-width: 1000px) {
+    width: 35%;
+  }
+  @media screen and (max-width: 450px) {
+    width: 52%;
+  }
 }
 
 .preview-button:hover,
 .preview-button:active {
-    font: inherit;
-    background-color: #240370;
-    color: white;
-    border: 1px solid #240370;
-    padding: 0.5rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
+  font: inherit;
+  background-color: rgb(160, 149, 149);
+  color: rgb(31, 28, 28);
+  border: 1px solid rgb(126, 116, 116);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.bullet-text{
-    align-self: center;
+.bullet-text {
+  align-self: center;
 }

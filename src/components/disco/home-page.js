@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Form from "../form";
 import CircleInput from "./circle-input";
+import BookFlightTickets from '../book-flight-tickets/book-flight-tickets';
 import '../../App.scss';
 
 class HomePage extends Component {
@@ -39,12 +40,14 @@ class HomePage extends Component {
                     <ul className="header">
                         <li><NavLink to="/cards">Cards</NavLink></li>
                         <li><NavLink to="/disco">Circles</NavLink></li>
+                        <li><NavLink to="/booktickets">Flight Booking Web App</NavLink></li>
                     </ul>
                     <div className="content">
                         {/* Route component contains a path prop. 
                     The value you specify for the path determines when this route is going to be active */}
                         <Route path="/cards" component={Form} />
                         <Route path="/disco" component={CircleInput} />
+                        <Route path="/booktickets" component={BookFlightTickets}/>
                     </div>
                 </div>
             </BrowserRouter>

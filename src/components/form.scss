@@ -18,7 +18,7 @@
   }
 }
 .form-header {
-  color: #fff;
+  color: rgb(19, 18, 18);
 }
 .btn-list {
   list-style: none;
@@ -36,7 +36,7 @@
 .form-control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: rgb(22, 21, 21);
 }
 
 .form-control input,
@@ -44,7 +44,7 @@
   font: inherit;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(138, 137, 137);
   width: 20rem;
   max-width: 100%;
 
@@ -56,7 +56,7 @@
 .form-control input:focus {
   outline: none;
   border-color: #240370;
-  background-color: #e0d4fd;
+  background-color: #9081b1;
 }
 
 .control-group {
@@ -74,7 +74,7 @@
 button {
   font: inherit;
   background-color: #240370;
-  color: white;
+  color: rgb(24, 22, 22);
   border: 1px solid #240370;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -96,9 +96,9 @@ button:active {
 button:disabled,
 button:disabled:hover,
 button:disabled:active {
-  background-color: #ccc;
+  background-color: rgb(160, 149, 149);
   color: #292929;
-  border-color: #ccc;
+  border-color: rgb(126, 116, 116);
   cursor: not-allowed;
 }
 
@@ -109,9 +109,9 @@ button:disabled:active {
 .form-actions button {
   margin: 1rem 0;
   width: 50%;
-  background-color: #240370;
-  color: white;
-  border: 1px solid #240370;
+  background-color: rgb(160, 149, 149);
+  color: rgb(31, 28, 28);
+  border: 1px solid rgb(126, 116, 116);
 }
 
 .invalid input {
@@ -143,7 +143,7 @@ button:disabled:active {
   font: inherit;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(128, 118, 118);
   width: 20rem;
   max-width: 100%;
 
@@ -158,10 +158,10 @@ button:disabled:active {
 .list input:focus {
   outline: none;
   border-color: #240370;
-  background-color: #e0d4fd;
+  background-color: #aba0c5;
 }
 .success-message-text {
-  color: #fff;
+  color: rgb(22, 18, 18);
 }
 img {
   height: 10rem;

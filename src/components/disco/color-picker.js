@@ -41,7 +41,11 @@ const ColorPicker = (props) => {
         array = [...array, ...shiftedArrValue];
         localStorage.setItem("input1ColorArr", JSON.stringify(array));
         let changeValue = [...inputCount1];
-        changeValue = array[1];
+        if(array.length === 1){
+          changeValue = array[0];
+        }else{
+          changeValue = array[1];
+        }
         setinputCount1((inputCount1 = changeValue));
       }
     }, 1000);
