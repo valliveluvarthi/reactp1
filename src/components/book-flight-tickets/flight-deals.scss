@@ -1,0 +1,33 @@
+.flight-deals {
+  &-text {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 32.74px;
+    color: gray;
+
+    @media screen and (max-width: 550px) {
+        font-size: 14px;
+    }
+    @media screen and (max-width: 506px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 389px) {
+        font-size: 9px;
+    }
+    @media screen and (max-width: 335px) {
+        font-size: 7px;
+    }
+  }
+
+  &-span {
+    color: #605dec;
+  }
+}
+.div-text {
+  color: #a1b0cc;
+}
