@@ -20,13 +20,11 @@ const FlightDeals = () => {
           <span>&#8594;</span>
         </div>
       </div>
-      <div className="group-imgs">
-        <div className="hotel-deals-singlepic">
-          <img
-            className="hotel-deals-singlepic-img"
-            src={FlightDealsPic1}
-            alt="Pic1"
-          />
+      <div className="gallery">
+        <div className="gallery__item gallery__item--1">
+          <img src={FlightDealsPic1} className="gallery__img" alt="Image 1" />
+        </div>
+        <div className="gallery__item gallery__desc--1">
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">
               <span>
@@ -42,12 +40,10 @@ const FlightDeals = () => {
             </div>
           </div>
         </div>
-        <div className="hotel-deals-singlepic">
-          <img
-            className="hotel-deals-singlepic-img"
-            src={FlightDealsPic2}
-            alt="Pic2"
-          />
+        <div className="gallery__item gallery__item--2">
+          <img src={FlightDealsPic2} className="gallery__img" alt="Image 2" />
+        </div>
+        <div className="gallery__item gallery__desc--2">
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">
               <span>
@@ -63,12 +59,10 @@ const FlightDeals = () => {
             </div>
           </div>
         </div>
-        <div className="hotel-deals-singlepic">
-          <img
-            className="hotel-deals-singlepic-img"
-            src={FlightDealsPic3}
-            alt="Pic3"
-          />
+        <div className="gallery__item gallery__item--3">
+          <img src={FlightDealsPic3} className="gallery__img" alt="Image 3" />
+        </div>
+        <div className="gallery__item gallery__desc--3">
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">
               <span>
