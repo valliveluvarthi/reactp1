@@ -8,7 +8,7 @@ const FlightDeals = () => {
   return (
     <React.Fragment>
       <div className="flight-deals-text">
-        <div>
+        <div className="text-stretch">
           <span>
             Find your next adventure with these{" "}
             <span className="flight-deals-span">flight deals</span>
@@ -20,12 +20,12 @@ const FlightDeals = () => {
           <span>&#8594;</span>
         </div>
       </div>
-      <div className="hotel-deals-wrapper">
-        <div className="hotel-deals-sub-cols">
+      <div className="group-imgs">
+        <div className="hotel-deals-singlepic">
           <img
+            className="hotel-deals-singlepic-img"
             src={FlightDealsPic1}
             alt="Pic1"
-            className="hotel-deals-sub-cols-img"
           />
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">
@@ -42,11 +42,11 @@ const FlightDeals = () => {
             </div>
           </div>
         </div>
-        <div className="hotel-deals-sub-cols">
+        <div className="hotel-deals-singlepic">
           <img
+            className="hotel-deals-singlepic-img"
             src={FlightDealsPic2}
             alt="Pic2"
-            className="hotel-deals-sub-cols-img"
           />
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">
@@ -63,11 +63,11 @@ const FlightDeals = () => {
             </div>
           </div>
         </div>
-        <div className="hotel-deals-sub-cols">
+        <div className="hotel-deals-singlepic">
           <img
+            className="hotel-deals-singlepic-img"
             src={FlightDealsPic3}
             alt="Pic3"
-            className="hotel-deals-sub-cols-img"
           />
           <div className="hotel-deals-sub-cols-desc">
             <div className="hotel-deals-sub-cols-desc-subrow-1">

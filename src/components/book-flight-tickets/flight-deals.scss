@@ -31,38 +31,10 @@
 .div-text {
   color: #a1b0cc;
   font-weight: 400;
+  width: 100%;
 }
 .hotel-deals {
-  &-wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    grid-column-gap: 2rem;
-    padding-left: 24px;
-
-    @media screen and (max-width: 600px) {
-      display: grid;
-      grid-template-columns: 0;
-      grid-template-rows: repeat(3, max-content);
-      grid-row-gap: 1rem;
-    }
-  }
-
   &-sub-cols {
-    display: grid;
-    grid-template-rows: repeat(2, max-content);
-
-    &-img {
-      width: 25.5rem;
-      height: 21.5rem;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-
-      @media screen and (max-width: 1382px) {
-        width: 23.5rem;
-        height: 18.5rem;
-      }
-    }
-
     &-desc {
       padding: 16px 24px 16px 24px;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -103,6 +75,19 @@
       width: 100%;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
+      object-fit: cover;
+      display: block;
     }
+  }
+}
+
+.text-stretch {
+  width: 100%;
+}
+.group-imgs{
+  display: flex;
+  @media screen and (max-width: 833px) {
+    display: flex;
+    flex-direction: column;
   }
 }
