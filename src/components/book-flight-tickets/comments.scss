@@ -1,0 +1,27 @@
+.comments-wrapper {
+  margin-top: 3rem;
+}
+.comments-header {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 32.74px;
+
+  @media screen and (max-width : 450px) {
+    font-size: 14px;
+  }
+
+  &-span {
+    padding: 12px 20px 12px 20px;
+    border-radius: 4px;
+    color: gray;
+
+    &-highlight {
+      color: #605dec;
+    }
+  }
+}
