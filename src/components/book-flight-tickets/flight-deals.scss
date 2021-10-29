@@ -97,9 +97,9 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(6, 7rem);
+  grid-template-rows: repeat(6, 4rem);
   grid-column-gap: 2rem;
-  padding: 24px 24px 0 24px;
+  padding: 24px 24px 0.5rem 24px;
 
   @media screen and (max-width: 1235px) {
     grid-template-rows: repeat(3, 7rem);

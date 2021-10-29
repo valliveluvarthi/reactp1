@@ -99,9 +99,9 @@
 .unique-places-gallery {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(7, 8rem);
+  grid-template-rows: repeat(7, 4rem);
   grid-column-gap: 2rem;
-  padding: 24px 24px 0 24px;
+  padding: 24px 24px 2rem 24px;
 
   @media screen and (max-width: 1235px) {
     grid-template-rows: repeat(5, 8rem);
@@ -210,5 +210,20 @@
         grid-row: 6 / span 1;
       }
     }
+  }
+}
+.explore {
+  &-div {
+    display: flex;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &-span {
+    padding : 12px 20px 12px 20px;
+    border-radius: 4px;
+    color: #FAFAFA;
+    background: #605DEC;
   }
 }

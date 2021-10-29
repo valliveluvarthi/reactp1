@@ -71,6 +71,9 @@ const UniquePlaces = () => {
           </div>
         </div>
       </div>
+      <div className="explore-div">
+            <span className="explore-span">Explore more stays</span>
+      </div>
     </div>
   );
 };
