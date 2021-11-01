@@ -1,3 +1,50 @@
-.footer-wrapper{
-    
+.footer-wrapper {
+  margin-top: 5rem;
+  padding: 16px 0px 16px 0px;
+}
+
+.footer-content {
+  padding-top: 1.5rem 0 1rem 0;
+  display: grid;
+  grid-template-columns: 1rem repeat(5, minmax(max-content, 17rem)) 1rem;
+
+  @media screen and (max-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1rem repeat(5, max-content) 1rem;
+  }
+
+  &-col1 {
+    text-align: center;
+    @media screen and (max-width: 900px) {
+      text-align: left;
+    }
+  }
+  &-col {
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &-header {
+      font-weight: 700;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 24.55px;
+      color: #6e7491;
+      padding: 1rem;
+    }
+    &-text {
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 21.82px;
+      color: #7c8db0;
+      cursor: pointer;
+      padding: 1rem;
+    }
+    &-img {
+      height: 3rem;
+      width: 8.5rem;
+    }
+  }
 }
