@@ -4,6 +4,7 @@ import SearchTickets from "./search-tickets";
 import FlightDeals from "./flight-deals";
 import UniquePlaces from './unique-places';
 import Comments from './comments';
+import Footer from './footer';
 import "./book-flight-tickets.scss";
 
 const BookFlightTickets = () => {
@@ -14,6 +15,7 @@ const BookFlightTickets = () => {
       <FlightDeals />
       <UniquePlaces/>
       <Comments/>
+      <Footer/>
     </div>
   );
 };
