@@ -247,6 +247,8 @@ const Footer = () => {
           </span>
         </div>
         <div></div>
+        <div></div>
+        <div></div>
         <div>© 2020 Tripma incorporated</div>
         <div></div>
       </div>

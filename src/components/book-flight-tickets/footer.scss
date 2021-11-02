@@ -57,13 +57,13 @@
   padding: 16px 0px 16px 0px;
   border-top: 1px solid #CBD4E6;
   display: grid;
-  grid-template-columns: 1rem 17rem 1fr 17rem 1rem;
+  grid-template-columns: 1rem repeat(5, minmax(max-content, 1fr)) 1rem;
   align-content: center;
   color: #7C8DB0;
 
   @media screen and (max-width: 500px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1rem max-content 1rem max-content 1rem;
+    grid-template-rows: 1rem max-content 1rem 0.5rem 1rem max-content 0;
   }
 }
