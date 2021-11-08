@@ -8,6 +8,9 @@ import {
 import Form from "../form";
 import CircleInput from "./circle-input";
 import BookFlightTickets from '../book-flight-tickets/book-flight-tickets';
+import ImageComponent from '../maruti/image-comp-files/image-comp';
+import RectCardComponent from '../maruti/rect-card-files/rect-card';
+import SquareCardComponent from '../maruti/square-card-files/square-card';
 import '../../App.scss';
 
 class HomePage extends Component {
@@ -41,6 +44,9 @@ class HomePage extends Component {
                         <li><NavLink to="/cards">Cards</NavLink></li>
                         <li><NavLink to="/disco">Circles</NavLink></li>
                         <li><NavLink to="/booktickets">Flight Booking Web App</NavLink></li>
+                        <li><NavLink to="/rect-card">Rectangle card</NavLink></li>
+                        <li><NavLink to="/square-card">Square card</NavLink></li>
+                        <li><NavLink to="/image-comp">Image Component</NavLink></li>
                     </ul>
                     <div className="content">
                         {/* Route component contains a path prop. 
@@ -48,6 +54,9 @@ class HomePage extends Component {
                         <Route path="/cards" component={Form} />
                         <Route path="/disco" component={CircleInput} />
                         <Route path="/booktickets" component={BookFlightTickets}/>
+                        <Route path="/rect-card" component={RectCardComponent}/>
+                        <Route path="/square-card" component={SquareCardComponent}/>
+                        <Route path="/image-comp" component={ImageComponent}/>
                     </div>
                 </div>
             </BrowserRouter>
