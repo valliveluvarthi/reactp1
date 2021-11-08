@@ -1,10 +1,9 @@
 import React from "react";
+import ReusableRectCardComponent from "./reusable-rect-card";
 
 const RectCardComponent = (props) => {
     return(
-        <React.Fragment>
-            <p>Rect Card Component</p>
-        </React.Fragment>
+        <ReusableRectCardComponent/>
     );
 }
 export default RectCardComponent;

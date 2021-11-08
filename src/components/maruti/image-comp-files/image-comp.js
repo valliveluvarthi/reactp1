@@ -1,10 +1,8 @@
 import React from "react";
-
+import ReusableImageComponent from './reusable-image-comp';
 const ImageComponent = (props) => {
     return(
-        <React.Fragment>
-            <p>Image Component</p>
-        </React.Fragment>
+        <ReusableImageComponent/>
     );
 }
 export default ImageComponent;

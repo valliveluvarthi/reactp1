@@ -1,10 +1,8 @@
 import React from "react";
-
+import ReusableSquareCardComponent from './reusable-square-card';
 const SquareCardComponent = (props) => {
     return(
-        <React.Fragment>
-            <p>Square Card Component</p>
-        </React.Fragment>
+        <ReusableSquareCardComponent/>
     );
 }
 export default SquareCardComponent;
