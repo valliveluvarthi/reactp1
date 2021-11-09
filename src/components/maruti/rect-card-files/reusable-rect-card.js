@@ -21,7 +21,6 @@ const ReusableRectCardComponent = (props) => {
     <div
       className="card-wrapper"
       id={props.object.bot_id}
-      //   style={{ backgroundImage: `url(${props.object.url_path})` }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
