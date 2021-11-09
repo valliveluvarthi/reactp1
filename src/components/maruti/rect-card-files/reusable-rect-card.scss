@@ -1,10 +1,12 @@
 // outermost div which pack items
 .packed-div {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 1rem;
   @media screen and (max-width: 896px) {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
