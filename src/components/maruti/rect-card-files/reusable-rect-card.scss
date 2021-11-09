@@ -1,0 +1,33 @@
+.packed-div {
+  display: flex;
+}
+
+.card-wrapper {
+  box-sizing: content-box;
+  width: 235.979px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  font-size: 12.0198px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  height: 400px;
+  display: flex;
+  border-left: 1px solid #928e8e;
+}
+
+.card-wrapper:hover {
+//   background-image: url("../../../assets/bot-development-bg.png");
+}
+
+.colored-div {
+  width: 6.47218px;
+  font-size: 12.0198px;
+  background-color: #f15444;
+  height: 116px;
+}
+
+.card-wrapper:hover .colored-div {
+  background-color: rgb(253, 167, 161);
+}
