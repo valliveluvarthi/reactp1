@@ -8,7 +8,8 @@ class RectCardComponent extends React.Component {
     this.state = {
       bot_development: [
         {
-          bot_id: "rect-card-bot-1",
+          type : "bot-development",
+          id: "rect-card-bot-1",
           url_path:
             "https://cdn-gcp.marutitech.com/wp-media/2019/03/bot-development-bg.png",
           title: "Chatbots",
@@ -27,7 +28,8 @@ class RectCardComponent extends React.Component {
             "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-arrow.svg",
         },
         {
-          bot_id: "rect-card-bot-2",
+          type : "bot-development",
+          id: "rect-card-bot-2",
           url_path:
             "https://cdn-gcp.marutitech.com/wp-media/2019/03/bot-development-bg.png",
           title: "RPA",
@@ -40,6 +42,20 @@ class RectCardComponent extends React.Component {
             "	https://marutitech.com/wp-content/uploads/2019/05/know-more-red-text.svg",
           know_more_red_arrow_svg:
             "https://marutitech.com/wp-content/uploads/2019/05/know-more-red-arrow.svg",
+          know_more_white_text_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-text.svg",
+          know_more_white_arrow_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-arrow.svg",
+        },
+        {
+          type : "artificial-intelligence",
+          id: "rect-card-ai-1",
+          url_path:
+            "https://cdn-gcp.marutitech.com/wp-content/uploads/2019/03/artificial-intelligence-bg.png",
+          title: "NLP",
+          description1:
+            "Process, assess & interpret unstructured data to operate effectively by leveraging our Natural Language Processing services. Add conversational intelligence to your apps & products to understand linguistics better with NLP.",
+          knowmore_text: true,
           know_more_white_text_svg:
             "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-text.svg",
           know_more_white_arrow_svg:

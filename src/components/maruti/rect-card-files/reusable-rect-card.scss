@@ -1,5 +1,9 @@
 .packed-div {
   display: flex;
+  @media screen and (max-width: 474px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .card-wrapper {
@@ -15,6 +19,10 @@
   height: 400px;
   display: flex;
   border-left: 1px solid #928e8e;
+
+  @media screen and (max-width: 474px) {
+    margin-top: 1rem;
+  }
 }
 
 .colored-div {
@@ -32,7 +40,16 @@
   padding: 1rem;
   display: grid;
 }
+.card-content-ai {
+  color: #ffffff;
+  padding: 1rem;
+  display: grid;
+}
 .card-wrapper:hover .card-content {
+  color: #ffffff;
+  display: grid;
+}
+.card-wrapper:hover .card-content-ai {
   color: #ffffff;
   display: grid;
 }
@@ -48,6 +65,12 @@
   width: 57.325px;
   height: 4px;
   background: #000000;
+  margin-top: 0.5rem;
+}
+.horizontal-line-ai {
+  width: 57.325px;
+  height: 4px;
+  background: #ffffff;
   margin-top: 0.5rem;
 }
 .card-wrapper:hover .card-content > .horizontal-line {
