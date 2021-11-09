@@ -8,37 +8,42 @@ class RectCardComponent extends React.Component {
     this.state = {
       bot_development: [
         {
-          bot_id : "rect-card-bot-1",
-          url_path: "https://cdn-gcp.marutitech.com/wp-media/2019/03/bot-development-bg.png",
+          bot_id: "rect-card-bot-1",
+          url_path:
+            "https://cdn-gcp.marutitech.com/wp-media/2019/03/bot-development-bg.png",
           title: "Chatbots",
-          title_text_underline: "#000000",
-          title_text_underline_onhover: "#ffffff",
           description1:
             "Maruti Techlabs offers industry-agnostic custom chatbot development services for customer support, lead generation, FAQs and more.",
           description2:
             "Integrate intelligent chatbots with existing set of tools across different channels.",
-          description_color: "#000000",
-          description_color_onhover: "#ffffff",
           knowmore_text: true,
-          knowmore_text_color: "#f15444",
-          knowmore_text_color_onhover: "#ffffff",
+          know_more_red_text_svg:
+            "	https://marutitech.com/wp-content/uploads/2019/05/know-more-red-text.svg",
+          know_more_red_arrow_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-red-arrow.svg",
+          know_more_white_text_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-text.svg",
+          know_more_white_arrow_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-arrow.svg",
         },
         {
-          bot_id : "rect-card-bot-2",
+          bot_id: "rect-card-bot-2",
           url_path:
             "https://cdn-gcp.marutitech.com/wp-media/2019/03/bot-development-bg.png",
           title: "RPA",
-          title_text_underline: "#000000",
-          title_text_underline_onhover: "#ffffff",
           description1:
             "We put efficiency at the center of the cogwheel of your operational processes, with a virtual workforce, enabled by automation.",
           description2:
             "Learn how your business can transcend conventional rule-based processes & leverage the benefits of RPA.",
-          description_color: "#000000",
-          description_color_onhover: "#ffffff",
           knowmore_text: true,
-          knowmore_text_color: "#f15444",
-          knowmore_text_color_onhover: "#ffffff",
+          know_more_red_text_svg:
+            "	https://marutitech.com/wp-content/uploads/2019/05/know-more-red-text.svg",
+          know_more_red_arrow_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-red-arrow.svg",
+          know_more_white_text_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-text.svg",
+          know_more_white_arrow_svg:
+            "https://marutitech.com/wp-content/uploads/2019/05/know-more-white-arrow.svg",
         },
       ],
     };

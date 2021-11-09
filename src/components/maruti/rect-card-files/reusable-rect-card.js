@@ -25,6 +25,40 @@ const ReusableRectCardComponent = (props) => {
       onMouseLeave={onMouseLeave}
     >
       <div className="colored-div"></div>
+      <div className="card-content">
+        <div className="card-title poppins-title-36">{props.object.title}</div>
+        <div className="horizontal-line"></div>
+        <div className="card-description">{props.object.description1}</div>
+        <div className="card-description">{props.object.description2}</div>
+        {props.object.knowmore_text && (
+          <div className="know-more">
+            <div className="know-more-red-text">
+              <img
+                className="image-text"
+                src={props.object.know_more_red_text_svg}
+                alt="know more 1"
+              />
+              <img
+                className="image-arrow"
+                src={props.object.know_more_red_arrow_svg}
+                alt="know more 1"
+              />
+            </div>
+            <div className="know-more-white-text">
+              <img
+                className="image-text"
+                src={props.object.know_more_white_text_svg}
+                alt="know more 2"
+              />
+              <img
+                className="image-arrow"
+                src={props.object.know_more_white_arrow_svg}
+                alt="know more 2"
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
