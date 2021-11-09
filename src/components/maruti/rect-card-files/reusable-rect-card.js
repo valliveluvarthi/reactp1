@@ -64,6 +64,7 @@ const ReusableRectCardComponent = (props) => {
                   alt="know more 2"
                 />
               </div>
+              <div className="know-more-text-decoration"></div>
             </div>
           )}
         </div>
@@ -72,12 +73,12 @@ const ReusableRectCardComponent = (props) => {
   } else {
     element = (
       <div
-        className="card-wrapper"
+        className="card-ai-wrapper"
         id={props.object.id}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div className="colored-div"></div>
+        <div className="colored-div-ai"></div>
         <div className="card-content-ai">
           <div className="card-title poppins-title-36">
             {props.object.title}
@@ -86,7 +87,7 @@ const ReusableRectCardComponent = (props) => {
           <div className="card-description">{props.object.description1}</div>
           {props.object.knowmore_text && (
             <div className="know-more">
-              <div className="know-more-white-text">
+              <div className="know-more-ai-white-text">
                 <img
                   className="image-text"
                   src={props.object.know_more_white_text_svg}
@@ -98,6 +99,7 @@ const ReusableRectCardComponent = (props) => {
                   alt="know more 2"
                 />
               </div>
+              <div className="know-more-text-decoration"></div>
             </div>
           )}
         </div>

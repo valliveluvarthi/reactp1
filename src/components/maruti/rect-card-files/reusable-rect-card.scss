@@ -1,11 +1,14 @@
+// outermost div which pack items
 .packed-div {
   display: flex;
-  @media screen and (max-width: 474px) {
+  margin-top: 1rem;
+  @media screen and (max-width: 896px) {
     display: flex;
     flex-direction: column;
   }
 }
 
+// css for card wrapper - bot
 .card-wrapper {
   box-sizing: content-box;
   width: 235.979px;
@@ -19,40 +22,85 @@
   height: 400px;
   display: flex;
   border-left: 1px solid #928e8e;
+  margin-right: 1rem;
 
-  @media screen and (max-width: 474px) {
+  @media screen and (max-width: 896px) {
     margin-top: 1rem;
   }
 }
 
+// css for card wrapper - ai
+.card-ai-wrapper {
+  box-sizing: content-box;
+  width: 235.979px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  font-size: 12.0198px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  height: 400px;
+  display: flex;
+  border-left: 1px solid #928e8e;
+  background: #423f56;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  @media screen and (max-width: 896px) {
+    margin-top: 1rem;
+  }
+}
+
+// css for title underlined div  - bot
 .colored-div {
-  width: 6.47218px;
+  width: 20.47218px;
   font-size: 12.0198px;
   background-color: #f15444;
   height: 116px;
 }
-
 .card-wrapper:hover .colored-div {
+  width: 20.47218px;
   background-color: rgb(253, 167, 161);
 }
 
+// css for title underlined div  - ai
+.colored-div-ai {
+  width: 40.47218px;
+  font-size: 12.0198px;
+  background-color: #ffbe10;
+  height: 116px;
+}
+.card-ai-wrapper:hover .colored-div-ai {
+  width: 40.47218px;
+  background-color: rgb(255, 255, 255);
+}
+
+// css change for card content - bot
 .card-content {
   padding: 1rem;
   display: grid;
 }
+
+// css change for card content - ai
 .card-content-ai {
   color: #ffffff;
   padding: 1rem;
   display: grid;
 }
+
+//on hover of bot - card-wrapper css change of card content
 .card-wrapper:hover .card-content {
   color: #ffffff;
   display: grid;
 }
-.card-wrapper:hover .card-content-ai {
+
+//on hover of ai - card-ai-wrapper css change of card content
+.card-ai-wrapper:hover .card-content-ai {
   color: #ffffff;
   display: grid;
 }
+
+//css for card-title
 .poppins-title-36 {
   font-family: "Poppins", sans-serif;
   font-size: 33.2855px;
@@ -61,29 +109,39 @@
   font-stretch: normal;
   letter-spacing: normal;
 }
+
+//css for bot - horizontal line under the title
 .horizontal-line {
   width: 57.325px;
   height: 4px;
   background: #000000;
   margin-top: 0.5rem;
 }
+
+//css for ai - horizontal line under the title
 .horizontal-line-ai {
   width: 57.325px;
   height: 4px;
   background: #ffffff;
   margin-top: 0.5rem;
 }
+
+//css for on hover of bot - card wrapper change the background of horizontal line
 .card-wrapper:hover .card-content > .horizontal-line {
   background: #ffffff;
   height: 4px;
   width: 57.325px;
   margin-top: 0.5rem;
 }
+
+//card description css
 .card-description {
   font-size: 12.9444px;
   border-color: #f8f8f8;
   margin: 1.5rem auto;
 }
+
+//css for knowmore text
 .know-more .image-text {
   width: 112.801px;
   height: 12.9444px;
@@ -92,10 +150,40 @@
   width: 112.801px;
   height: 12.9444px;
   margin-left: -7rem;
+  position: relative;
+  left: 0;
+  transition: all 0.3s ease 0s;
 }
+.image-arrow:hover {
+  left: 15px;
+}
+.know-more-white-text {
+  display: none;
+}
+
+//css for know-more text on hover of bot card wrapper
 .card-wrapper:hover .know-more > .know-more-red-text {
   display: none;
 }
 .card-wrapper:hover .know-more > .know-more-white-text {
   display: block;
+}
+
+//css for know-more text on hover of ai card wrapper
+.card-ai-wrapper:hover .know-more > .know-more-ai-white-text {
+  display: block;
+}
+
+//css for know more text underline
+.card-wrapper:hover .know-more > .know-more-text-decoration {
+  display: block;
+  width: 39%;
+  height: 0.1rem;
+  background-color: white;
+}
+.card-ai-wrapper:hover .know-more > .know-more-text-decoration {
+  display: block;
+  width: 39%;
+  height: 0.1rem;
+  background-color: white;
 }
