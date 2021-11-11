@@ -28,7 +28,7 @@ const ReusableSquareCardComponent = (props) => {
     }
   };
   return (
-    <div className="sq-card-wrapper">
+    <div className={"sq-card-wrapper wrapper-" + props.object.s_no}>
       <img
         id={props.object.id}
         className="background-image"
