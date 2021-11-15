@@ -3,7 +3,7 @@
 }
 .img-comp-wrapper {
   display: grid;
-  grid-template-columns: 2fr repeat(2, 40rem) 2fr;
+  grid-template-columns: 2fr repeat(2, 15fr) 2fr;
   grid-template-rows: 5rem 5rem 8rem 5rem 5rem 5rem 8rem 5rem;
   align-items: center;
   grid-column-gap: 6rem;
