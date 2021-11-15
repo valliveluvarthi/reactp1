@@ -4,10 +4,10 @@ const ReusableBlogComponent = (props) => {
     return(
             <React.Fragment>
                 {
-                    props.title === "All" && <button className="blogs-btn btn-active">{props.title}</button>
+                    props.title === "All" && <button className="btn-active blogs-btn">{props.title}</button>
                 }
                 {
-                    props.title !== "All" && <button className="blogs-btn">{props.title}</button>
+                    props.title !== "All" && <button className="blogs-btn blogs-btn-color">{props.title}</button>
                 }
             </React.Fragment>
     );
