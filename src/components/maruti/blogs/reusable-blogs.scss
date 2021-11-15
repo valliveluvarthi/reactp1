@@ -1,7 +1,21 @@
+.blogs_wrapper {
+  display: grid;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  grid-template-columns: 2fr 25fr 2fr;
+}
 .packed_blogs {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 //button css
@@ -64,6 +78,6 @@
   background-color: #ffffff;
   border-right-color: transparent;
 }
-.blogs-btn-color{
-    color: #0e0000;
+.blogs-btn-color {
+  color: #0e0000;
 }

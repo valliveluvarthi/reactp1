@@ -27,12 +27,14 @@ class BlogComponent extends React.Component {
   }
   render() {
     return (
-      <div className="packed_blogs">
-        {this.state.titles.length > 0 &&
-          this.state.titles.map((item, i) => {
+      <div className="blogs_wrapper">
+        <div className="packed_blogs">
+          {this.state.titles.length > 0 &&
+            this.state.titles.map((item, i) => {
               console.log(item);
-            return <ReusableBlogComponent key={i} title={item} />;
-          })}
+              return <ReusableBlogComponent key={i} title={item} />;
+            })}
+        </div>
       </div>
     );
   }
