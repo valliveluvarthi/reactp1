@@ -7,7 +7,10 @@ const ReusableBlogComponent = (props) => {
                     props.title === "All" && <button className="btn-active blogs-btn">{props.title}</button>
                 }
                 {
-                    props.title !== "All" && <button className="blogs-btn blogs-btn-color">{props.title}</button>
+                    props.title === "User Experience" && <button className="blogs-btn blogs-btn-color">{props.title}</button>
+                }
+                {
+                    (props.title !== "All" && props.title !== "User Experience") && <button className="blogs-btn blogs-btn-color blogs-btn-border">{props.title}</button>
                 }
             </React.Fragment>
     );

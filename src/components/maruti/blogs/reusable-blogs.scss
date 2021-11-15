@@ -56,7 +56,6 @@
   padding-top: 1.1379800853485065vw;
   padding-bottom: 1.1379800853485065vw;
   border: 0px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
 
   @media screen and (max-width: 766px) {
     font-size: 2.13798vw;
@@ -80,4 +79,7 @@
 }
 .blogs-btn-color {
   color: #0e0000;
+}
+.blogs-btn-border {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
