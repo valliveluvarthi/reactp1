@@ -3,10 +3,18 @@
 }
 .img-comp-wrapper {
   display: grid;
-  grid-template-columns: 4rem 1fr 1fr 4rem;
+  grid-template-columns: 2fr repeat(2, 40rem) 2fr;
   grid-template-rows: 5rem 5rem 8rem 5rem 5rem 5rem 8rem 5rem;
   align-items: center;
 
+  @media screen and (min-width: 1378px) {
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 40rem) 2fr;
+  }
+  @media screen and (max-width: 1378px) {
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 5fr) 2fr;
+  }
   @media screen and (max-width: 900px) {
     display: grid;
     grid-template-columns: 2rem 1fr 2rem;
