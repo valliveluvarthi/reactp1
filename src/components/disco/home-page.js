@@ -11,6 +11,7 @@ import BookFlightTickets from '../book-flight-tickets/book-flight-tickets';
 import ImageComponent from '../maruti/image-comp-files/image-comp';
 import RectCardComponent from '../maruti/rect-card-files/rect-card';
 import SquareCardComponent from '../maruti/square-card-files/square-card';
+import BlogComponent from '../maruti/blogs/blogs';
 import '../../App.scss';
 
 class HomePage extends Component {
@@ -47,6 +48,7 @@ class HomePage extends Component {
                         <li><NavLink to="/rect-card">Rectangle card</NavLink></li>
                         <li><NavLink to="/square-card">Square card</NavLink></li>
                         <li><NavLink to="/image-comp">Image Component</NavLink></li>
+                        <li><NavLink to="/blogs">Blogs</NavLink></li>
                     </ul>
                     <div className="content">
                         {/* Route component contains a path prop. 
@@ -57,6 +59,7 @@ class HomePage extends Component {
                         <Route path="/rect-card" component={RectCardComponent}/>
                         <Route path="/square-card" component={SquareCardComponent}/>
                         <Route path="/image-comp" component={ImageComponent}/>
+                        <Route path="/blogs" component={BlogComponent}/>
                     </div>
                 </div>
             </BrowserRouter>
