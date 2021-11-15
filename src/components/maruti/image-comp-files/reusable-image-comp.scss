@@ -128,7 +128,11 @@
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem);
+    transform: translateY(4rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(4rem);
   }
   100% {
     opacity: 1;
