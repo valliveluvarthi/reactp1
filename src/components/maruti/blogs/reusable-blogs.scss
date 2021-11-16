@@ -7,7 +7,7 @@
   align-items: center;
   grid-template-columns: 2fr 25fr 2fr;
 }
-.packed_blogs {
+.packed-blogs {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +16,29 @@
   align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
+}
+.image-blogs {
+  padding: 2rem;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  grid-column-gap: 5rem;
+
+  @media screen and (max-width: 975px) {
+    grid-column-gap: 3rem;
+  }
+  @media screen and (max-width: 535px) {
+    padding: 0;
+    grid-column-gap: 2rem;
+  }
+  @media screen and (max-width: 450px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-row-gap: 1rem;
+  }
 }
 
 //button css
@@ -82,4 +105,137 @@
 }
 .blogs-btn-border {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+//image content
+.image-div-wrapper {
+  background-color: lightgray;
+  border-color: #f8f8f8;
+}
+.blog-card {
+  position: relative;
+  width: 41.607396870554766vw;
+  height: 20.62588904694168vw;
+  border-radius: 5px;
+  margin-bottom: 2.844950213371266vw;
+  background-size: cover !important;
+  text-align: center;
+  cursor: pointer;
+
+  @media screen and (max-width: 975px) {
+    width: 39.607396870554766vw;
+    height: 18.62588904694168vw;
+  }
+  @media screen and (max-width: 975px) {
+    width: 37.607396870554766vw;
+    height: 16.62588904694168vw;
+  }
+  @media screen and (max-width: 450px) {
+    width: 70.607396870554766vw;
+    height: 40.62588904694168vw;
+  }
+}
+.slideanim {
+  visibility: hidden;
+  visibility: visible\9;
+}
+.slideanim.slide {
+  visibility: visible;
+  animation: slide 1s;
+}
+.slideanim::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*animation card hover*/
+.style_prevu_kit {
+  position: relative;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+.style_prevu_kit:hover {
+  box-shadow: 0px 0px 50px #000000;
+  z-index: 2;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.1);
+  transition: all 200ms ease-in;
+  transform: scale(1.1);
+}
+
+//resource_title_wrapper
+.resource_title_wrapper {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: url(https://cdn-gcp.marutitech.com/wp-media/2019/11/f771e8ff-blog-shadow3.png)
+    no-repeat 0px -4.978662873399715vw transparent !important;
+  background-color: transparent !important;
+  background-size: cover !important;
+
+  @media screen and (max-width: 490px) {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: url(https://cdn-gcp.marutitech.com/wp-media/2019/11/f771e8ff-blog-shadow3.png)
+      no-repeat 0px 0px transparent !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+  }
+}
+.blog-card-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2802275960170697vw;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding-left: 1.7780938833570414vw;
+  padding-bottom: 1.422475106685633vw;
+  padding-right: 5.689900426742532vw;
+  padding-top: 1.422475106685633vw;
+
+  @media screen and (max-width: 767px) {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 3.888888888888889vw;
+    padding-left: 3.888888888888889vw;
+    padding-bottom: 4.166666666666666vw;
+    padding-top: 16.666666666666664vw;
+  }
 }
