@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
 .blogs_wrapper {
   display: grid;
   display: grid;
@@ -48,9 +50,9 @@
   outline: 0;
   margin-bottom: 1.1379800853485065vw;
   background-color: transparent;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.1379800853485065vw;
-  font-weight: normal;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.19;
@@ -83,7 +85,7 @@
   border-right-color: transparent;
 }
 .blogs-btn:focus {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin-right: 0.42674253200568996vw;
   font-size: 1.1379800853485065vw;
   font-weight: bold;
@@ -209,7 +211,7 @@
   }
 }
 .blog-card-title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.2802275960170697vw;
   font-weight: 500;
   font-style: normal;
