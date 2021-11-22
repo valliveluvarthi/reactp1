@@ -18,6 +18,13 @@
   align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+  }
 }
 .image-blogs {
   padding: 2rem;
@@ -76,6 +83,7 @@
   @media screen and (max-width: 500px) {
     font-size: 3vw;
     text-align: left;
+    border-right: 0px;
   }
 }
 .blogs-btn:hover {
@@ -122,6 +130,9 @@
 }
 .blogs-btn-border {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 500px) {
+    border-right: 0px;
+  }
 }
 
 //all button css
@@ -158,6 +169,7 @@
   @media screen and (max-width: 500px) {
     font-size: 3vw;
     text-align: left;
+    border-right: 0px;
   }
 }
 .all-btn:focus {
@@ -193,6 +205,7 @@
   @media screen and (max-width: 500px) {
     font-size: 3vw;
     text-align: left;
+    border-right: 0px;
   }
 }
 .all-btn:hover {
@@ -219,6 +232,20 @@
   padding-right: 2.5604551920341394vw;
   padding-top: 1.1379800853485065vw;
   padding-bottom: 1.1379800853485065vw;
+
+  @media screen and (max-width: 766px) {
+    font-size: 2.13798vw;
+    text-align: left;
+    margin-bottom: 2.1379800853485065vw;
+    padding-left: 3.5604551920341394vw;
+    padding-right: 3.5604551920341394vw;
+    padding-top: 2.1379800853485065vw;
+    padding-bottom: 2.1379800853485065vw;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 3vw;
+    text-align: left;
+  }
 }
 //image content
 .image-div-wrapper {
