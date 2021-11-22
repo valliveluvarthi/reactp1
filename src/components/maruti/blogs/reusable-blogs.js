@@ -1,28 +1,20 @@
 import React, { useEffect } from "react";
 import "./reusable-blogs.scss";
 const ReusableBlogComponent = (props) => {
-  useEffect(() => {
-    let btn = document.getElementById("all-btn");
-    if (btn) {
-      btn.style.color = "#ffffff";
-      btn.style.backgroundColor = "#f05444";
-    }
-  });
   const onLabelClick = () => {
     let btn = document.getElementById("all-btn");
-    btn.style.backgroundColor = "";
-    btn.style.color = "#000000";
+    btn.classList.remove("all-btn-active");
   };
   const onAllLabelClick = () => {
     let btn = document.getElementById("all-btn");
-    btn.style.color = "#ffffff";
+    btn.classList.add("all-btn-active");
   };
   return (
     <React.Fragment>
       {props.title === "All" && (
         <button
           id="all-btn"
-          className="blogs-btn blogs-btn-color blogs-btn-border"
+          className="all-btn all-btn-active"
           onClick={onAllLabelClick}
         >
           {props.title}
